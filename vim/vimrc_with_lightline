@@ -1,0 +1,409 @@
+scriptencoding utf-8
+syntax on
+" enable 256 color
+set t_Co=256
+"colorscheme jellybeans 
+"colorscheme solarized
+"colorscheme wombat256mod
+"colorscheme mer-blue-bg
+colorscheme mer-blue
+"colorscheme mer-minimal
+" turn off colors on cursor line - if we have line heighlighted in any way, it
+" turns special keys (tabs mainly) the "normal" color
+"hi CursorLine ctermfg=NONE ctermbg=NONE cterm=NONE
+" set color of non text chars (eol, extends and precedes)
+"hi NonText ctermfg=235 ctermbg=NONE cterm=NONE
+" set color of special keys (nbsp, tab and trail)
+"hi SpecialKey ctermfg=235 ctermbg=NONE cterm=NONE
+" set colored columns (to indicate desired line length) to dark gray
+"hi colorcolumn ctermfg=NONE ctermbg=235 cterm=NONE
+set colorcolumn=80,120
+"let &colorcolumn="80,".join(range(120,999),",")
+"let &colorcolumn="80,".join(range(120,999),",")
+set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8	" saving and encoding
+set nobackup nowritebackup noswapfile autoread				" no backup or swap
+set hlsearch incsearch ignorecase smartcase					" search
+set wildmenu wildmode=longest:full,full						" completion
+set backspace=indent,eol,start								" sane backspace
+set clipboard=unnamedplus									" use system clipboard for yank/pul/delete
+set nomousehide												" don't hide the mouse cursor while typing
+set mouse=n													" enable mouse support in normal mode
+set mousemodel=popup										" right-click pops up context menu
+set ruler													" show cursor position in status bar
+set number													" show line numbers on left
+set nofoldenable											" don't allow code folding
+set scrolloff=3												" scroll the window so we can always see x lines around the cursor
+"set cursorline												" highlight the current line // NOTE: THIS SEEMS TO GREATLY SLOW DOWN SCROLLING IF ENABLED
+"set nowrap													" don't wrap lines
+set wrap													" wrap lines
+set textwidth=0 wrapmargin=0								" turn off physical line wrapping (ie: automatic insertion of newlines)
+set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab		" 4 space tabstops
+"set listchars=space:.,nbsp:_,tab:>—,eol:$,trail:-			" show tabstops visually
+"set listchars=nbsp:·,tab:>—,trail:·							" show tabstops visually
+"set listchars=nbsp:·,tab:▶▹,trail:·
+set listchars=nbsp:·,tab:▶-,trail:·
+set list													" turns on showing chars described in listchars
+set showmatch												" highlights matching parens/brackets
+set laststatus=2											" always enbale status line
+set showtabline=2											" alwasys display tabline
+set relativenumber											" in place of absolute line numbers, show relative from current // NOTE: THIS GREALY SLOWS DOWN SCROLLING WHEN ENABLED
+set lazyredraw												" redraw screen less frequently - ths speeds up verticle scrolling so can now use relativenumber with acceptable scroll speed
+set undofile												" create undo files so undos carry over even after closed
+set undolevels=5000											" store up to 5000 levels of undo history
+set undodir=$HOME/.vim/undo									" where to save undo files
+set autoindent												" copy indent from prior line
+set visualbell												" display visual bell instead of beeping
+set ttyfast													" fast terminal connection
+set autochdir												" automatically charnge current working dir to file of current buffer
+
+"turn on the sign column always so it doesn't cause the whole window to move
+"when there are signs or no signs to display
+if exists('&signcolumn')
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
+
+" configiure netrw to be like NERDtree
+let g:netrw_banner = 0										" hide netrd banner (I to toggle)
+let g:netrw_liststyle = 3									" show netrw tree with parent showing
+"let g:netrw_browse_split = 0								" open file in same window on <cr>
+let g:netrw_browse_split = 4								" open file in prior window on <cr>
+let g:netrw_altv = 1 
+let g:netrw_winsize = 25									" set netrw width to 25% of page
+
+" php syntax options
+let php_sql_query = 1										" highlight SQL syntax in strings
+let php_htmlInStrings = 1									" highlight HTML in strings
+
+" configure bufexplorer
+"let g:bufExplorerShowTabBuffer = 1							" controls if to show buffers on for the specific tab
+"let g:bufExplorerSortBy='number'							" control sorting - 'extension', 'fullpath', 'mru', 'name' or 'number'
+"let g:bufExplorerShowDirectories=0							" don't show directories
+
+"au InsertEnter * hi StatusLine term=reverse ctermfg=255 ctermbg=4
+"au InsertLeave * hi StatusLine term=reverse ctermfg=255 ctermbg=237
+let g:airline_powerline_fonts = 1
+"if !exists('g:airline_symbols')
+"  let g:airline_symbols = {}
+"endif
+
+" unicode symbols
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+"let g:airline_left_sep = ''
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline_symbols.branch = ''
+"let g:airline_symbols.readonly = ''
+"let g:airline_symbols.linenr = ''
+
+let g:lightline = {
+      \ 'component' : { 
+      \   'filename': '%n:%t',
+      \   'syntastic' : '%#warnings#%{SyntasticStatuslineFlag()}%*',
+      \   'readonly' : '%{&readonly ? "" : ""}',
+      \   'modified' : '%{&modified ? "+" : &modifiable ? "" : "-"}' 
+      \ },
+      \ 'colorscheme': 'mer',
+      \ 'separator' : { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator' : { 'left': "|", 'right': "|" },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch' ],
+      \             [ 'readonly', 'filename', 'modified' ] ],
+      \   'right' : [ [ 'lineinfo' ],
+      \               [ 'percent' ],
+      \               [ 'fileformat', 'fileencoding', 'filetype' ],
+      \             ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'GitBranchWithSymbol'
+      \ }
+      \ }
+
+
+function! GitBranchWithSymbol()
+  if exists('*gitbranch#name')
+    let branch_name = gitbranch#name()
+	return strlen(branch_name) > 0 ? '  ' . branch_name . ' ' : ''
+  else
+    return ''
+  endif
+endfunction
+
+"disable attempts for PHP QA from calling PHP Code Sniffer and PHP Mess
+"Detector as these are not installed on our server
+"let g:phpqa_messdetector_autorun = 0
+"let g:phpqa_codesniffer_autorun = 0
+"let g:phpqa_codecoverage_autorun = 0
+
+"syntastic config
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+execute pathogen#infect()
+
+" enable PHP autocomplete for all PHP files
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+	set nolazyredraw
+  else
+    set relativenumber
+	set lazyredraw
+  endif
+endfunc
+
+" get rid of delay when using ESC to exit INSERT mode
+"set timeout							" do time out on mappings and others
+"set ttimeoutlen=10
+"augroup FastEscape
+"  autocmd!
+"  au InsertEnter * set timeoutlen=1000
+"  au InsertLeave * set timeoutlen=1000
+"augroup END
+
+" show highlight groups
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+set timeout timeoutlen=3000 ttimeoutlen=10	" time out on mapping after 3 seconds, on key codes after 1/100th sec
+
+" key mappings
+inoremap <c-F> <C-x><C-o>
+inoremap <leader>p <ESC>:r ~/templates/phpdoc.php<CR>jA
+inoremap <leader>d <ESC>:r ~/templates/phperron.php<CR>i
+nnoremap <leader>d :bp\|bd #<CR>
+nnoremap <leader>n :call NumberToggle()<CR>
+nnoremap <leader>b :ls<CR>:b 
+nmap <leader>sp :call <SID>SynStack()<CR>
+noremap <F5> :mks! ~/.vim/session/session_1<CR>
+noremap <F6> :mks! ~/.vim/session/session_2<CR>
+noremap <F7> :mks! ~/.vim/session/session_3<CR>
+noremap <F8> :mks! ~/.vim/session/session_4<CR>
+noremap <F9> :source ~/.vim/session/session_1<CR>
+noremap <F10> :source ~/.vim/session/session_2<CR>
+noremap <F11> :source ~/.vim/session/session_3<CR>
+noremap <F12> :source ~/.vim/session/session_4<CR>
+nnoremap <TAB> <C-W>w
+nnoremap <s-TAB> <C-W>W
+
+" my custom tab line and status line 
+
+" below setting mimic the 'dracula' coloring from lightline
+"let s:merSection1FG=235
+"let s:merSection1BG=141
+"let s:merSection2FG=231
+"let s:merSection2BG=61
+"let s:merMainFG=0
+"let s:merMainBG=249
+"let s:merVisualFG=235
+"let s:merVisualBG=215
+"let s:merInsertFG=235
+"let s:merInsertBG=84
+"let s:merInactiveFG=249
+"let s:merInactiveBG=237
+
+let s:merSection1FG=255
+let s:merSection1BG=33
+let s:merSection2FG=253
+let s:merSection2BG=27
+let s:merMainFG=253
+let s:merMainBG=21
+let s:merVisualFG=255
+let s:merVisualBG=202
+let s:merInsertFG=254
+let s:merInsertBG=28
+let s:merInactiveFG=249
+let s:merInactiveBG=237
+
+
+exec 'hi MERNormalSection ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+exec 'hi MERNormalSectionSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+exec 'hi MERVisualSection ctermfg=' . s:merVisualFG . ' ctermbg=' . s:merVisualBG . ' cterm=NONE'
+exec 'hi MERVisualSectionSep ctermfg=' . s:merVisualBG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+exec 'hi MERInsertSection ctermfg=' . s:merInsertFG . ' ctermbg=' . s:merInsertBG . ' cterm=NONE'
+exec 'hi MERInsertSectionSep ctermfg=' . s:merInsertBG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+ 
+exec 'hi MERMain ctermfg=' . s:merMainFG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+exec 'hi MERInactive ctermfg=' . s:merInactiveFG . ' ctermbg=' . s:merInactiveBG . ' cterm=NONE'
+exec 'hi MERSection1 ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+exec 'hi MERSection1Sep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+exec 'hi MERSection2 ctermfg=' . s:merSection2FG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+exec 'hi MERSection2Sep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+
+exec 'hi MERTabMain ctermfg=' . s:merMainFG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+exec 'hi MERTab ctermfg=' . s:merSection2FG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+exec 'hi MERTabSep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+exec 'hi MERLastTabSep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+exec 'hi MERCurrentTab ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+exec 'hi MERCurrentTabSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+exec 'hi MERCurrentLastTabSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+
+function! ActiveStatus()
+  let sl=""
+"  let sl.="%#MERSection1#"
+"  let sl.=" %{GetMode()} "
+"  let sl.="%#MERSection1Sep#\ue0b0"
+"
+  if mode() == 'n'
+    let sl .= "%#MERNormalSection# NORMAL %#MERNormalSectionSep#\ue0b0"
+  elseif mode() == 'v'
+    let sl .= "%#MERVisualSection# VISUAL %#MERVisualSectionSep#\ue0b0"
+  elseif mode() == 'i'
+    let sl .= "%#MERInsertSection# INSERT %#MERInsertSectionSep#\ue0b0"
+  else
+    let sl .= "%#MERNormalSection# " . mode() . " %#MERNormalSectionSep#\ue0b0"
+  endif
+
+  let sl.="%#MERSection2#"
+  let sl.="%{GitBranchWithSymbol()}"
+  let sl.="%#MERSection2Sep#\ue0b0"
+  let sl.="%#MERMain#"
+  let sl.=" %n:%t %r%m"
+  let sl.="%<"
+  let sl.="%="
+  let sl.="%{&fileformat}"
+  let sl.=" | %{&fileencoding?&fileencoding:&encoding}"
+  let sl.=" | %Y "
+  let sl.="%#MERSection2Sep#\ue0b2"
+  let sl.="%#MERSection2#"
+  let sl.="%4p%% "
+  let sl.="%#MERSection1Sep#\ue0b2"
+  let sl.="%#MERSection1#"
+  let sl.=" %4l:%-3c "
+"  let sl.=" %4l "
+  return sl
+endfunction
+
+function! InactiveStatus()
+  let sl=""
+  let sl.="%#MERInactive#"
+  let sl.=" %n:%t %r%m"
+  let sl.="%<"
+  let sl.="%="
+  let sl.=" %4l:%-3c "
+  return sl
+endfunction
+
+
+"'function! GetMode()
+"  if mode() == 'n'
+"    exec 'hi MERSection1 ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+"    exec 'hi MERSection1Sep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"    return 'NORMAL'
+"  elseif mode() == 'v'
+"    exec 'hi MERSection1 ctermfg=' . s:merVisualFG . ' ctermbg=' . s:merVisualBG . ' cterm=NONE'
+"    exec 'hi MERSection1Sep ctermfg=' . s:merVisualBG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"    return 'VISUAL'
+"  elseif mode() == 'i'
+"    exec 'hi MERSection1 ctermfg=' . s:merInsertFG . ' ctermbg=' . s:merInsertBG . ' cterm=NONE'
+"     exec 'hi MERSection1Sep ctermfg=' . s:merInsertBG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"    return 'INSERT'
+"  else
+"    return mode()
+"endfunction
+
+function! GetMode()
+  if mode() == 'n'
+    return '%#MERNormalSection#NORMAL%#MERNormalSectionSep#\ue0b0'
+  elseif mode() == 'v'
+    return "%#MERVisualSection#VISUAL%#MERVisualSectionSep#\ue0b0"
+  elseif mode() == 'i'
+    return "%#MERInsertSection#INSERT%#MERInsertSectionSep#\ue0b0"
+  else
+    return mode()
+endfunction
+
+
+
+
+" call our color overrides script to override colors we want static
+" no matter which color scheme we use (gray tabs, color columns, etc)
+" - we have to do this via autocmd's otherwise if we load sessions
+" it overrides these changes and only uses base color scheme
+"autocmd VimEnter * source ~/.vim/mer_color_overrides.vim
+"autocmd SessionLoadPost * source ~/.vim/mer_color_overrides.vim
+
+set statusline=%!ActiveStatus()
+
+autocmd WinEnter * setlocal statusline=%!ActiveStatus()
+autocmd WinLeave * setlocal statusline=%!InactiveStatus()
+
+function! MyTabLine()
+
+	let s = ''
+	
+	for i in range(tabpagenr('$'))
+		let tabnr = i + 1 " range() starts at 0
+		let winnr = tabpagewinnr(tabnr)
+		let buflist = tabpagebuflist(tabnr)
+		let bufnr = buflist[winnr - 1]
+		let bufname = fnamemodify(bufname(bufnr), ':t')
+
+		let s .= '%' . tabnr . 'T'
+		let s .= (tabnr == tabpagenr() ? '%#MERCurrentTab#' : '%#MERTab#')
+		let s .= ' ' . tabnr 
+
+		let n = tabpagewinnr(tabnr,'$')
+		if n > 1 | let s .= ':' . n | endif
+
+		let bufmodified = getbufvar(bufnr, "&mod")
+		if bufmodified | let s .= '+' | endif
+	
+		let s .= empty(bufname) ? ' [No Name] ' : ' ' . bufname . ' '
+
+		let simplesep = 0
+		if (tabnr < tabpagenr('$'))
+			if (tabpagenr() != tabnr) && (tabpagenr() != tabnr + 1)
+				let s .= ''
+				let simplesep = 1
+			endif
+		endif
+
+		if simplesep == 0
+			if tabnr == tabpagenr('$')
+				let s .= (tabnr == tabpagenr() ? "%#MERCurrentLastTabSep#\ue0b0" : "%#MERLastTabSep#\ue0b0")
+			else
+				let s .= (tabnr == tabpagenr() ? "%#MERCurrentTabSep#\ue0b0" : "%#MERTabSep#\ue0b0")
+			endif
+		endif
+
+	endfor
+
+	" after the last tab fill with TabLineFill and reset tab page nr
+	let s .= '%#MERMain#%T'
+
+	if tabpagenr('$') > 1
+		let s .= '%='
+		let s .= "%#MERLastTabSep#\ue0b2"
+		let s .= '%#MERTab#%999X X '
+	endif
+	
+	return s
+
+endfunction
+
+set tabline=%!MyTabLine()

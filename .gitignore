@@ -1,0 +1,13 @@
+" Mac system files
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Compressed files
+*.zip
+
+# tag files
+tags

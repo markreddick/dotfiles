@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/mreddick/.vim/colors'
+let g:netrw_dirhist_2='/home/mreddick/code/release/application/controllers'
+let g:netrw_dirhist_3='/home/mreddick/code/release/application/views/email/xml'
+let g:netrw_dirhist_4='/home/mreddick/code/release/application/views/email'
+let g:netrw_dirhist_5='/home/mreddick/code/release/application/views'
+let g:netrw_dirhist_6='/home/mreddick/code'
+let g:netrw_dirhist_7='/home/mreddick/code/release/application/controllers'
+let g:netrw_dirhist_8='/home/sites/www/dealers/_ids/604/sites/www.harbor-hyundai.com'
+let g:netrw_dirhist_9='/home/mreddick/.vim'

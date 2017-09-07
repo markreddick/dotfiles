@@ -1,0 +1,80 @@
+scriptencoding utf-8
+syntax on
+" enable 256 color
+set t_Co=256
+colorscheme fahrenheit 
+" turn off colors on cursor line - if we have line heighlighted in any way, it
+" turns special keys (tabs mainly) the "normal" color
+hi CursorLine ctermfg=NONE ctermbg=NONE cterm=NONE
+" set color of non text chars (eol, extends and precedes)
+hi NonText ctermfg=235 ctermbg=NONE cterm=NONE
+" set color of special keys (nbsp, tab and trail)
+hi SpecialKey ctermfg=235 ctermbg=NONE cterm=NONE
+" set colored columns (to indicate desired line length) to dark gray
+hi colorcolumn ctermfg=NONE ctermbg=235 cterm=NONE
+set colorcolumn=80,120
+"let &colorcolumn="80,".join(range(120,999),",")
+set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8	" saving and encoding
+set nobackup nowritebackup noswapfile autoread				" no backup or swap
+set hlsearch incsearch ignorecase smartcase					" search
+set wildmenu wildmode=longest:full,full						" completion
+set backspace=indent,eol,start								" sane backspace
+set clipboard=unnamedplus									" use system clipboard for yank/pul/delete
+set nomousehide												" don't hide the mouse cursor while typing
+set mouse=a													" enable mouse support
+set mousemodel=popup										" right-click pops up context menu
+set ruler													" show cursor position in status bar
+set number													" show line numbers on left
+set nofoldenable											" don't allow code folding
+set scrolloff=10											" scroll the window so we can always see 10 lines around the cursor
+set cursorline												" highlight the current line
+"set nowrap													" don't wrap lines
+set wrap													" wrap lines
+set textwidth=0 wrapmargin=0								" turn off physical line wrapping (ie: automatic insertion of newlines)
+set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab		" 4 space tabstops
+"set listchars=space:.,nbsp:_,tab:>—,eol:$,trail:-			" show tabstops visually
+"set listchars=nbsp:·,tab:>—,trail:·							" show tabstops visually
+"set listchars=nbsp:·,tab:▶▹,trail:·
+set listchars=nbsp:·,tab:▶-,trail:·
+set list													" turns on showing chars described in listchars
+set showmatch												" highlights matching parens/brackets
+set laststatus=2											" always enbale status line
+set relativenumber											" in place of absolute line numbers, show relative from current
+set undofile												" create undo files so undos carry over even after closed
+set autoindent												" copy indent from prior line
+set visualbell												" display visual bell instead of beeping
+set ttyfast													" fast terminal connection
+
+" configiure netrw to be like NERDtree
+let g:netrw_banner = 0										" hide netrd banner (I to toggle)
+let g:netrw_liststyle = 3									" show netrw tree with parent showing
+let g:netrw_browse_split = 4								" open netrw in previous window
+let g:netrw_altv = 1 
+let g:netrw_winsize = 25									" set netrw width to 25% of page
+
+" php syntax options
+let php_sql_query = 1										" highlight SQL syntax in strings
+let php_htmlInStrings = 1									" highlight HTML in strings
+
+au InsertEnter * hi StatusLine term=reverse ctermfg=255 ctermbg=4
+au InsertLeave * hi StatusLine term=reverse ctermfg=255 ctermbg=237
+let g:airline_powerline_fonts = 1
+let g:lightline = {
+      \ 'colorscheme': 'Dracula',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
+execute pathogen#infect()
+
+" enable PHP autocomplete for all PHP files
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+" key mappings
+imap <c-F> <C-x><C-o>
+imap <leader>p <ESC>:r ~/templates/phpdoc.php<CR>jA
+
