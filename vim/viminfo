@@ -16,6 +16,7 @@ $
 # Command Line History (newest to oldest):
 :q
 :w
+:qa
 :b13
 :ls
 :b11
@@ -28,7 +29,6 @@ $
 :b1
 :b
 :sp
-:qa
 :sh
 :NERDTree
 :b17
@@ -127,8 +127,16 @@ $
 "0	LINE	0
 		<div class="fl_c"></div>
 ""1	LINE	0
-	
+	# VIM
 "2	LINE	0
+	
+"3	LINE	0
+	# VIM session files
+"4	LINE	0
+	
+"5	LINE	0
+	
+"6	LINE	0
 	.git/
 	application/
 	bin/
@@ -160,304 +168,38 @@ $
 	offers_process.php
 	phpunit.php@
 	phpunit.xml
-"3	LINE	0
-	./
-"4	LINE	0
-	../
-"5	LINE	0
-	
-"6	LINE	0
-	
-	../
-	release/
-	| .git/
-	| application/
-	| | config/
-	| | | autoload.php
-	| | | config.php
-	| | | constants.php
-	| | | database.php
-	| | | doctypes.php
-	| | | foreign_chars.php
-	| | | hooks.php
-	| | | javascript_files.php
-	| | | mimes.php
-	| | | pagination.php
-	| | | profiler.php
-	| | | routes.php
-	| | | smileys.php
-	| | | user_agents.php
-	| | controllers/
-	| | | ajax.php
-	| | | api.php
-	| | | cli.php
-	| | | cron.php
-	| | | cross_domain_cookie.php
-	| | | dummy.php
-	| | | lead.php
-	| | | loader.php
-	| | | nobrain.php
-	| | | pages.php
-	| | | resrc.php
-	| | | unittest.php
-	| | core/
-	| | helpers/
-	| | libraries/
-	| | models/
-	| | modules/
-	| | | dashboard/
-	| | | | controllers/
-	| | | | | activitylog/
-	| | | | | ads/
-	| | | | | analytics/
-	| | | | | autospecials/
-	| | | | | caroi/
-	| | | | | contentmanager/
-	| | | | | dashdepartment/
-	| | | | | dashvehicle/
-	| | | | | dashvideogallery/
-	| | | | | dealergrade/
-	| | | | | drivecentive/
-	| | | | | formbuilder/
-	| | | | | home/
-	| | | | | homepage/
-	| | | | | iSpy/
-	| | | | | | iSpy.php
-	| | | | | imagemanager/
-	| | | | | incentives/
-	| | | | | leadgroups/
-	| | | | | | leadgroupcreate.php
-	| | | | | | leadgroupedit.php
-	| | | | | | leadgrouplist.php
-	| | | | | leads/
-	| | | | | location/
-	| | | | | media/
-	| | | | | navigation/
-	| | | | | notifications/
-	| | | | | pages/
-	| | | | | popup/
-	| | | | | pricemanager/
-	| | | | | prices/
-	| | | | | reporting/
-	| | | | | showroom/
-	| | | | | | showroom-settings.php
-	| | | | | | showroomsettings.php
-	| | | | | site/
-	| | | | | | cachecontrol.php
-	| | | | | | manage_toolbar.php
-	| | | | | | megamenuinterface.php
-	| | | | | | menu_page_controls.php
-	| | | | | | navigation.php
-	| | | | | | navitem.php
-	| | | | | | pagecodes.php
-	| | | | | | pagehoursdefault.php
-	| | | | | | pagehoursitem.php
-	| | | | | | pageitem.php
-	| | | | | | pageitemglobal.php
-	| | | | | | pagemanager.php
-	| | | | | | pagephonedefault.php
-	| | | | | | pagephoneitem.php
-	| | | | | | pagephoneruleset.php
-	| | | | | | pagesglobal.php
-	| | | | | | permissionsinfo.php
-	| | | | | | popundersettings.php
-	| | | | | | popupcontrols.php
-	| | | | | | select_site.php
-	| | | | | | shellpagephones.php
-	| | | | | | site_navigation.php
-	| | | | | | sitecontrol.php
-	| | | | | | sitemapcategories.php
-	| | | | | | sitemapcategoryitem.php
-	| | | | | | sites.php
-	| | | | | sitelogs/
-	| | | | | staff/
-	| | | | | stats/
-	| | | | | testimonials/
-	| | | | | users/
-	| | | | | | accountemails.php
-	| | | | | | create.php
-	| | | | | | edit.php
-	| | | | | | manager.php
-	| | | | | | passwordchange.php
-	| | | | | | passwordrecover.php
-	| | | | | | userdeprep.php
-	| | | | | | userlastpageserved.php
-	| | | | | | usersadd.php
-	| | | | | | usersedit.php
-	| | | | | | userslist.php
-	| | | | | | userslogin.php
-	| | | | | | userslogout.php
-	| | | | | utility/
-	| | | | | | daterange.php
-	| | | | | | pagination.php
-	| | | | | | result_filters.php
-	| | | | | | vehicle_filter.php
-	| | | | | webstats/
-	| | | | views/
-	| | | gearbox/
-	| | | parents/
-	| | | private/
-	| | | | controllers/
-	| | | | | account/
-	| | | | | component/
-	| | | | | cron/
-	| | | | | custom-content/
-	| | | | | holland/
-	| | | | | lead/
-	| | | | | liveedit/
-	| | | | | location/
-	| | | | | mhtml/
-	| | | | | navigation/
-	| | | | | php/
-	| | | | | resrc/
-	| | | | | | AIS.php
-	| | | | | | atom.php
-	| | | | | | autoedit.php
-	| | | | | | clickpath.php
-	| | | | | | contentmanager.php
-	| | | | | | dutch.php
-	| | | | | | eautoappraise.php
-	| | | | | | globalvirtualvehicle.php
-	| | | | | | google.php
-	| | | | | | googlewallet.php
-	| | | | | | googlewallettools.php
-	| | | | | | iSpy.php
-	| | | | | | inventory.php
-	| | | | | | inventoryitemindex.php
-	| | | | | | leadinfo.php
-	| | | | | | media.php
-	| | | | | | modelscroller.php
-	| | | | | | nci.php
-	| | | | | | newpricing.php
-	| | | | | | offer.php
-	| | | | | | pagesetuptools.php
-	| | | | | | passbook.php
-	| | | | | | passbooktools.php
-	| | | | | | pricemanagerpricedisplay.php
-	| | | | | | pricing.php
-	| | | | | | robots.php
-	| | | | | | routeone.php
-	| | | | | | rss.php
-	| | | | | | searchagent.php
-	| | | | | | searchtools.php
-	| | | | | | shiftdigital.php
-	| | | | | | sourcedata.php
-	| | | | | | ssl.php
-	| | | | | | subscriber.php
-	| | | | | | toyota.php
-	| | | | | | viplocationconfig.php
-	| | | | | | virtualvehicle.php
-	| | | | | | vsc.php
-	| | | | | | xmlsitemap.php
-	| | | | | search/
-	| | | | | seo/
-	| | | | | showroom/
-	| | | | | smart-search/
-	| | | | | stats/
-	| | | | | unittests/
-	| | | | | vehicle/
-	| | | | | workshop/
-	| | | | | form.php
-	| | | | views/
-	| | | public/
-	| | | utilities/
-	| | | | controllers/
-	| | | | views/
-	| | | | andrew.php
-	| | seo/
-	| | third_party/
-	| | | MX/
-	| | views/
-	| | | ThirdPartyAnalytics/
-	| | | analytics/
-	| | | email/
-	| | | errors/
-	| | | js/
-	| | | partial/
-	| | | pricing/
-	| | | projects/
-	| | | shells/
-	| | | third_party/
-	| | | 404_default_view.php
-	| | | blank.php
-	| | | cookie_agreement.php
-	| | | debug_sidebar.php
-	| | | email_recovery.php
-	| | | email_verification.php
-	| | | home_view.php
-	| | | lazy_load.php
-	| | | module_preview_add_button.php
-	| | | module_preview_content.php
-	| | | module_view_content.php
-	| | | module_view_select_button.php
-	| | | search.php
-	| | | shell.php
-	| | | site_inactive.php
-	| | | site_unavailable.php
-	| | | v_dump.php
-	| bin/
-	| cron/
-	| daemon/
-	| data/
-	| dbscripts/
-	| documents/
-	| inline/
-	| min/
-	| public_html/
-	| skeleton/
-	| sql/
-	| src/
-	| | AIS/
-	| | Bing/
-	| | Google/
-	| | Manufacturers/
-	| | Phoenix/
-	| | ShiftDigital/
-	| system/
-	| tests/
-	| vendor/
-	| .gitignore
-	| .htaccess
-	| README.md
-	| build.xml
-	| cli.php
-	| composer.json
-	| composer.lock
-	| cron_index.php
-	| index.php
-	| maint.php
-	| maintenance.jpg
-	| offers_process.php
-	| phpunit.php@
-	| phpunit.xml
 "7	LINE	0
-	leadgroupcreate.php
-	leadgroupedit.php
-	leadgrouplist.php
-"8	LINE	0
 	./
-"9	LINE	0
+"8	LINE	0
 	../
+"9	LINE	0
+	
 "-	CHAR	0
 	Minify Local Assets: <span style="cursor:pointer;color:#f60;text-decoration:underline;"> <a target="_blank" href='http://<?php echo $host;?>/api/sitemin/401ba86bf7929aa09b30641757262575'>Minify Assets</a></span>
 
 # File marks:
-'0  16  8  ~/dotfiles/.gitignore
-'1  13  0  ~/dotfiles/.gitignore
-'2  28  28  ~/code/release/application/modules/gearbox/controllers/config/manufacturer.php
-'3  124  23  ~/code/release/application/models/thirdpartyappmodel.php
-'4  100  3  ~/code/release/application/modules/dashboard/controllers/iSpy/iSpy.php
-'5  6  33  ~/code/release/application/core/MY_Loader.php
-'6  7  0  ~/dotfiles/vim/colors/mer-blue.vim
-'7  1  0  ~/code/release/application/controllers/cli.php
-'8  5  0  ~/dotfiles/vim/colors/mer-blue.vim
-'9  1  0  ~/merfiles/vim/colors/mer-blue.vim
+'0  17  0  ~/dotfiles/.gitignore
+'1  19  10  ~/dotfiles/.gitignore
+'2  49  0  ~/dotfiles/vim/viminfo
+'3  1  0  ~/dotfiles/vim/vimnfo
+'4  18  12  ~/dotfiles/.gitignore
+'5  16  18  ~/code/release/application/modules/gearbox/views/edit_site.php
+'6  28  28  ~/code/release/application/modules/gearbox/controllers/config/manufacturer.php
+'7  124  23  ~/code/release/application/models/thirdpartyappmodel.php
+'8  100  3  ~/code/release/application/modules/dashboard/controllers/iSpy/iSpy.php
+'9  6  33  ~/code/release/application/core/MY_Loader.php
 
 # Jumplist (newest first):
--'  16  8  ~/dotfiles/.gitignore
--'  13  0  ~/dotfiles/.gitignore
--'  11  0  ~/dotfiles/.gitignore
--'  28  28  ~/code/release/application/modules/gearbox/controllers/config/manufacturer.php
+-'  17  0  ~/dotfiles/.gitignore
+-'  19  0  ~/dotfiles/.gitignore
+-'  18  0  ~/dotfiles/.gitignore
+-'  49  0  ~/dotfiles/vim/viminfo
+-'  1  0  ~/dotfiles/vim/viminfo
+-'  1  0  ~/dotfiles/vim/vimnfo
+-'  16  0  ~/dotfiles/.gitignore
+-'  16  18  ~/code/release/application/modules/gearbox/views/edit_site.php
+-'  25  0  ~/code/release/application/modules/gearbox/views/edit_site.php
+-'  28  2  ~/code/release/application/modules/gearbox/controllers/config/manufacturer.php
 -'  1  0  ~/code/release/NERD_tree_2
 -'  336  1  ~/code/release/application/modules/private/controllers/resrc/clickpath.php
 -'  124  23  ~/code/release/application/models/thirdpartyappmodel.php
@@ -515,7 +257,6 @@ $
 -'  39  3  ~/code/release/application/controllers/ajax.php
 -'  164  37  ~/dotfiles/vim/vimrc
 -'  1  0  ~/dotfiles/vim/vimrc
--'  25  3  ~/code/release/application/modules/gearbox/views/edit_site.php
 -'  323  0  ~/code/release/application/modules/gearbox/views/edit_site.php
 -'  313  7  ~/code/release/application/modules/gearbox/views/edit_site.php
 -'  302  0  ~/code/release/application/modules/gearbox/views/edit_site.php
@@ -530,7 +271,8 @@ $
 -'  389  8  ~/code/release/application/modules/gearbox/views/edit_site.php
 -'  307  33  ~/code/release/application/modules/gearbox/views/edit_site.php
 -'  298  0  ~/code/release/application/modules/gearbox/views/edit_site.php
--'  28  28  ~/code/release/application/modules/gearbox/controllers/config/manufacturer.php
+-'  13  0  ~/dotfiles/.gitignore
+-'  11  0  ~/dotfiles/.gitignore
 -'  1  0  ~/code/release/NERD_tree_2
 -'  336  1  ~/code/release/application/modules/private/controllers/resrc/clickpath.php
 -'  124  23  ~/code/release/application/models/thirdpartyappmodel.php
@@ -547,85 +289,35 @@ $
 -'  1  0  ~/code/release/phpunit.xml
 -'  11  0  ~/dotfiles/vim/colors/mer-blue.vim
 -'  10  0  ~/dotfiles/vim/colors/mer-blue.vim
--'  9  0  ~/dotfiles/vim/colors/mer-blue.vim
--'  1  0  ~/merfiles/vim/colors/mer-blue.vim
--'  1  0  ~/code/release/NetrwTreeListing 1
--'  114  0  ~/code/release/application/modules/dashboard/controllers/iSpy/iSpy.php
--'  33  1  ~/code/release/application/config/routes.php
 
 # Buffer list:
-%~/dotfiles/.gitignore	16	8
+%~/dotfiles/.gitignore	17	0
 
 # History of marks within files (newest to oldest):
 
 > ~/dotfiles/.gitignore
-	"	16	8
-	^	16	9
-	.	16	8
+	"	17	0
+	^	19	11
+	.	19	10
 	+	10	5
-	+	16	8
+	+	16	9
+	+	20	0
+	+	17	12
+	+	20	4
+	+	15	6
+	+	17	0
+	+	20	0
+	+	18	13
+	+	19	10
 
-> ~/code/release/maintenance.jpg
+> ~/dotfiles/vim/viminfo
+	"	49	0
+
+> ~/dotfiles/vim/vimnfo
 	"	1	0
-
-> ~/dotfiles/vim/colors/mer-blue.vim
-	"	7	0
-	^	5	1
-	.	7	0
-	+	10	0
-	+	9	0
-	+	10	0
-	+	11	0
-	+	7	0
-	+	7	0
-
-> ~/code/release/offers_process.php
-	"	1	0
-
-> ~/code/release/application/core/MY_Loader.php
-	"	6	0
-
-> ~/code/release/application/config/routes.php
-	"	33	0
-	.	50	0
-	+	50	11
-	+	50	170
-	+	50	8
-	+	50	0
-	+	51	0
-	+	50	0
-
-> ~/code/release/application/modules/gearbox/controllers/nav.php
-	"	27	0
-	.	63	0
-	+	63	0
-
-> ~/dotfiles/vim/vimrc
-	"	164	0
-	^	164	38
-	.	164	37
-	+	74	0
-	+	75	0
-	+	164	37
-
-> ~/code/release/application/models/navigationmodel.php
-	"	105	4
-
-> ~/code/release/application/modules/gearbox/controllers/sites.php
-	"	1	0
-
-> ~/code/release/application/modules/gearbox/views/sites_list.php
-	"	85	3
-	^	67	34
-	.	67	0
-	+	77	0
-	+	67	0
-
-> ~/code/release/application/modules/gearbox/views/ad_managers.php
-	"	38	1
 
 > ~/code/release/application/modules/gearbox/views/edit_site.php
-	"	25	0
+	"	16	18
 	^	4	0
 	.	667	0
 	+	116	0
@@ -698,37 +390,8 @@ $
 	+	3	25
 	+	667	0
 
-> ~/code/release/application/modules/dashboard/controllers/showroom/showroomsettings.php
-	"	258	1
-
-> ~/code/release/application/modules/dashboard/controllers/iSpy/iSpy.php
-	"	105	2
-
-> ~/code/release/application/models/thirdpartyappmodel.php
-	"	124	4
-
-> ~/code/release/application/modules/gearbox/controllers/thirdpartyapps/manage_thirdparty_apps.php
-	"	393	0
-
-> ~/code/release/application/models/pageextmodel.php
-	"	2684	1
-	.	2682	0
-	+	2682	41
-	+	2712	17
-	+	2689	10
-	+	2682	0
-
-> ~/code/release/application/modules/gearbox/controllers/config/pagesetup.php
-	"	140	4
-
-> ~/code/release/application/modules/gearbox/controllers/page/urlslist.php
-	"	35	2
-
-> ~/code/release/application/modules/gearbox/controllers/pricemanager/pricemanager.php
-	"	16	2
-
 > ~/code/release/application/modules/gearbox/controllers/config/manufacturer.php
-	"	28	28
+	"	33	16
 	^	26	30
 	.	26	29
 	+	26	0
@@ -831,6 +494,94 @@ $
 	+	11	0
 	+	4	0
 	+	26	29
+
+> ~/code/release/maintenance.jpg
+	"	1	0
+
+> ~/dotfiles/vim/colors/mer-blue.vim
+	"	7	0
+	^	5	1
+	.	7	0
+	+	10	0
+	+	9	0
+	+	10	0
+	+	11	0
+	+	7	0
+	+	7	0
+
+> ~/code/release/offers_process.php
+	"	1	0
+
+> ~/code/release/application/core/MY_Loader.php
+	"	6	0
+
+> ~/code/release/application/config/routes.php
+	"	33	0
+	.	50	0
+	+	50	11
+	+	50	170
+	+	50	8
+	+	50	0
+	+	51	0
+	+	50	0
+
+> ~/code/release/application/modules/gearbox/controllers/nav.php
+	"	27	0
+	.	63	0
+	+	63	0
+
+> ~/dotfiles/vim/vimrc
+	"	164	0
+	^	164	38
+	.	164	37
+	+	74	0
+	+	75	0
+	+	164	37
+
+> ~/code/release/application/models/navigationmodel.php
+	"	105	4
+
+> ~/code/release/application/modules/gearbox/controllers/sites.php
+	"	1	0
+
+> ~/code/release/application/modules/gearbox/views/sites_list.php
+	"	85	3
+	^	67	34
+	.	67	0
+	+	77	0
+	+	67	0
+
+> ~/code/release/application/modules/gearbox/views/ad_managers.php
+	"	38	1
+
+> ~/code/release/application/modules/dashboard/controllers/showroom/showroomsettings.php
+	"	258	1
+
+> ~/code/release/application/modules/dashboard/controllers/iSpy/iSpy.php
+	"	105	2
+
+> ~/code/release/application/models/thirdpartyappmodel.php
+	"	124	4
+
+> ~/code/release/application/modules/gearbox/controllers/thirdpartyapps/manage_thirdparty_apps.php
+	"	393	0
+
+> ~/code/release/application/models/pageextmodel.php
+	"	2684	1
+	.	2682	0
+	+	2682	41
+	+	2712	17
+	+	2689	10
+	+	2682	0
+
+> ~/code/release/application/modules/gearbox/controllers/config/pagesetup.php
+	"	140	4
+
+> ~/code/release/application/modules/gearbox/controllers/page/urlslist.php
+	"	35	2
+
+> ~/code/release/application/modules/gearbox/controllers/pricemanager/pricemanager.php
+	"	16	2
 
 > ~/code/release/application/modules/gearbox/controllers/config/dealerlogo.php
 	"	1	0
