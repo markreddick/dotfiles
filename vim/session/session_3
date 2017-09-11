@@ -3,12 +3,15 @@ if &cp | set nocp | endif
 nnoremap 	 w
 let s:cpo_save=&cpo
 set cpo&vim
+map  <Plug>(ctrlp)
 nmap [c <Plug>GitGutterPrevHunk
 nmap \hp <Plug>GitGutterPreviewHunk
 nmap \hr <Plug>GitGutterUndoHunk:echomsg '\hr is deprecated. Use \hu'
 nmap \hu <Plug>GitGutterUndoHunk
 nmap \hs <Plug>GitGutterStageHunk
-nnoremap \b :ls:b 
+nnoremap \s :sp **/*
+nnoremap \e :e **/*
+nnoremap \b :ls:b
 nnoremap \n :call NumberToggle()
 nnoremap \d :bp|bd #
 nmap ]c <Plug>GitGutterNextHunk
@@ -27,6 +30,7 @@ xnoremap <silent> <Plug>GitGutterTextObjectOuterVisual :call gitgutter#hunk#te
 xnoremap <silent> <Plug>GitGutterTextObjectInnerVisual :call gitgutter#hunk#text_object(1)
 onoremap <silent> <Plug>GitGutterTextObjectOuterPending :call gitgutter#hunk#text_object(0)
 onoremap <silent> <Plug>GitGutterTextObjectInnerPending :call gitgutter#hunk#text_object(1)
+nnoremap <silent> <Plug>(ctrlp) :CtrlP
 nnoremap <S-Tab> W
 noremap <F12> :source ~/.vim/session/session_4
 noremap <F11> :source ~/.vim/session/session_3
@@ -41,7 +45,6 @@ inoremap \d :r ~/templates/phperron.phpi
 inoremap \p :r ~/templates/phpdoc.phpjA
 let &cpo=s:cpo_save
 unlet s:cpo_save
-set autochdir
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -53,12 +56,12 @@ set ignorecase
 set incsearch
 set laststatus=2
 set lazyredraw
-set listchars=nbsp:·,tab:▶-,trail:·
+set listchars=nbsp:·,tab:│·,trail:·
 set mouse=n
 set mousemodel=popup
 set omnifunc=phpcomplete#CompletePHP
 set ruler
-set runtimepath=~/.vim,~/.vim/bundle/syntastic,~/.vim/bundle/vim-gitbranch,~/.vim/bundle/vim-gitgutter,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
+set runtimepath=~/.vim,~/.vim/bundle/ctrlp.vim,~/.vim/bundle/nerdtree,~/.vim/bundle/syntastic,~/.vim/bundle/vim-gitbranch,~/.vim/bundle/vim-gitgutter,/usr/share/vim/vimfiles,/usr/share/vim/vim74,/usr/share/vim/vimfiles/after,~/.vim/after
 set scrolloff=3
 set shiftwidth=4
 set showmatch
@@ -74,7 +77,8 @@ set timeoutlen=3000
 set ttimeoutlen=10
 set undodir=~/.vim/undo
 set undofile
-set viminfo='20,\"50
+set undolevels=5000
+set viminfo='1000,f1,<500,%,n~/.vim/viminfo
 set visualbell
 set wildmenu
 set wildmode=longest:full,full
@@ -82,33 +86,185 @@ set nowritebackup
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/code/release/application/libraries/Search
+cd ~/code/release
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +40 ~/code/release/application/controllers/manufacturer.php
-badd +1214 ~/code/release/application/libraries/Search/UrlTranslator.php
-badd +242 ~/code/release/application/modules/private/controllers/search/filters.php
+badd +1 maintenance.jpg
+badd +7 ~/dotfiles/vim/colors/mer-blue.vim
+badd +1 offers_process.php
+badd +0 application/core/MY_Loader.php
 argglobal
 silent! argdel *
-argadd ~/code/release/application/controllers/manufacturer.php
-argadd UrlTranslator.php
-argadd ~/code/release/application/modules/private/controllers/search/filters.php
-edit ~/code/release/application/libraries/Search/UrlTranslator.php
+edit application/core/MY_Loader.php
 set splitbelow splitright
 wincmd _ | wincmd |
-split
-1wincmd k
+vsplit
+1wincmd h
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 21 + 27) / 55)
-exe '2resize ' . ((&lines * 30 + 27) / 55)
+exe 'vert 1resize ' . ((&columns * 31 + 98) / 197)
+exe 'vert 2resize ' . ((&columns * 165 + 98) / 197)
 argglobal
-edit ~/code/release/application/libraries/Search/UrlTranslator.php
+enew
+file NERD_tree_1
+let s:cpo_save=&cpo
+set cpo&vim
+nnoremap <buffer> <silent> <NL> :call nerdtree#ui_glue#invokeKeyMap("<C-j>")
+nnoremap <buffer> <silent>  :call nerdtree#ui_glue#invokeKeyMap("<C-k>")
+nnoremap <buffer> <silent>  :call nerdtree#ui_glue#invokeKeyMap(g:NERDTreeMapActivateNode)
+nnoremap <buffer> <silent> ? :call nerdtree#ui_glue#invokeKeyMap("?")
+nnoremap <buffer> <silent> A :call nerdtree#ui_glue#invokeKeyMap("A")
+nnoremap <buffer> <silent> B :call nerdtree#ui_glue#invokeKeyMap("B")
+nnoremap <buffer> <silent> CD :call nerdtree#ui_glue#invokeKeyMap("CD")
+nnoremap <buffer> <silent> C :call nerdtree#ui_glue#invokeKeyMap("C")
+nnoremap <buffer> <silent> D :call nerdtree#ui_glue#invokeKeyMap("D")
+nnoremap <buffer> <silent> F :call nerdtree#ui_glue#invokeKeyMap("F")
+nnoremap <buffer> <silent> I :call nerdtree#ui_glue#invokeKeyMap("I")
+nnoremap <buffer> <silent> J :call nerdtree#ui_glue#invokeKeyMap("J")
+nnoremap <buffer> <silent> K :call nerdtree#ui_glue#invokeKeyMap("K")
+nnoremap <buffer> <silent> O :call nerdtree#ui_glue#invokeKeyMap("O")
+nnoremap <buffer> <silent> P :call nerdtree#ui_glue#invokeKeyMap("P")
+nnoremap <buffer> <silent> R :call nerdtree#ui_glue#invokeKeyMap("R")
+nnoremap <buffer> <silent> T :call nerdtree#ui_glue#invokeKeyMap("T")
+nnoremap <buffer> <silent> U :call nerdtree#ui_glue#invokeKeyMap("U")
+nnoremap <buffer> <silent> X :call nerdtree#ui_glue#invokeKeyMap("X")
+nnoremap <buffer> <silent> cd :call nerdtree#ui_glue#invokeKeyMap("cd")
+nnoremap <buffer> <silent> e :call nerdtree#ui_glue#invokeKeyMap("e")
+nnoremap <buffer> <silent> f :call nerdtree#ui_glue#invokeKeyMap("f")
+nnoremap <buffer> <silent> gi :call nerdtree#ui_glue#invokeKeyMap("gi")
+nnoremap <buffer> <silent> gs :call nerdtree#ui_glue#invokeKeyMap("gs")
+nnoremap <buffer> <silent> go :call nerdtree#ui_glue#invokeKeyMap("go")
+nnoremap <buffer> <silent> i :call nerdtree#ui_glue#invokeKeyMap("i")
+nnoremap <buffer> <silent> m :call nerdtree#ui_glue#invokeKeyMap("m")
+nnoremap <buffer> <silent> o :call nerdtree#ui_glue#invokeKeyMap("o")
+nnoremap <buffer> <silent> p :call nerdtree#ui_glue#invokeKeyMap("p")
+nnoremap <buffer> <silent> q :call nerdtree#ui_glue#invokeKeyMap("q")
+nnoremap <buffer> <silent> r :call nerdtree#ui_glue#invokeKeyMap("r")
+nnoremap <buffer> <silent> s :call nerdtree#ui_glue#invokeKeyMap("s")
+nnoremap <buffer> <silent> t :call nerdtree#ui_glue#invokeKeyMap("t")
+nnoremap <buffer> <silent> u :call nerdtree#ui_glue#invokeKeyMap("u")
+nnoremap <buffer> <silent> x :call nerdtree#ui_glue#invokeKeyMap("x")
+nnoremap <buffer> <silent> <2-LeftMouse> :call nerdtree#ui_glue#invokeKeyMap("<2-LeftMouse>")
+nnoremap <buffer> <silent> <LeftRelease> <LeftRelease>:call nerdtree#ui_glue#invokeKeyMap("<LeftRelease>")
+nnoremap <buffer> <silent> <MiddleMouse> :call nerdtree#ui_glue#invokeKeyMap("<MiddleMouse>")
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=hide
+setlocal nobuflisted
+setlocal buftype=nofile
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=80,120
+setlocal colorcolumn=80,120
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'nerdtree'
+setlocal filetype=nerdtree
+endif
+setlocal foldcolumn=0
+set nofoldenable
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+set list
+setlocal list
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal nomodifiable
+setlocal nrformats=octal,hex
+set number
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+set relativenumber
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!InactiveStatus()
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'nerdtree'
+setlocal syntax=nerdtree
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal undofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal winfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+wincmd w
+argglobal
 onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
 onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
@@ -205,7 +361,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!ActiveStatus()
+setlocal statusline=
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
@@ -223,138 +379,16 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 261 - ((17 * winheight(0) + 10) / 21)
+let s:l = 6 - ((5 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-261
-normal! 024|
+6
+normal! 034|
 wincmd w
-argglobal
-edit ~/code/release/application/controllers/manufacturer.php
-onoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
-nnoremap <buffer> <silent> [[ ?\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)?:nohls
-onoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
-nnoremap <buffer> <silent> ]] /\(.*\%#\)\@!\_^\s*\zs\(\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\|\(abstract\s\+\|final\s\+\)*class\|interface\)/:nohls
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=hide
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=80,120
-setlocal colorcolumn=80,120
-setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'php'
-setlocal filetype=php
-endif
-setlocal foldcolumn=0
-set nofoldenable
-setlocal nofoldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=\\(require\\|include\\)\\(_once\\)\\?
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-set list
-setlocal list
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:],<:>
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=phpcomplete#CompletePHP
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-set relativenumber
-setlocal relativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=4
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=4
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=%!InactiveStatus()
-setlocal suffixesadd=
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'php'
-setlocal syntax=php
-endif
-setlocal tabstop=4
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal undofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 34 - ((19 * winheight(0) + 15) / 30)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-34
-normal! 025|
-wincmd w
-exe '1resize ' . ((&lines * 21 + 27) / 55)
-exe '2resize ' . ((&lines * 30 + 27) / 55)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 98) / 197)
+exe 'vert 2resize ' . ((&columns * 165 + 98) / 197)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

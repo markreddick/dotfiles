@@ -71,8 +71,8 @@ endif
 " configiure netrw to be like NERDtree
 let g:netrw_banner = 0										" hide netrd banner (I to toggle)
 let g:netrw_liststyle = 3									" show netrw tree with parent showing
-let g:netrw_browse_split = 0								" open file in same window on <cr>
-"let g:netrw_browse_split = 4								" open file in prior window on <cr>
+"let g:netrw_browse_split = 0								" open file in same window on <cr>
+let g:netrw_browse_split = 4								" open file in prior window on <cr>
 let g:netrw_altv = 1 
 let g:netrw_winsize = 25									" set netrw width to 25% of page
 
@@ -161,6 +161,7 @@ nnoremap <leader>n :call NumberToggle()<CR>
 nnoremap <leader>b :ls<CR>:b
 nnoremap <leader>e :e **/*
 nnoremap <leader>s :sp **/*
+nnoremap <leader>t :NERDTreeToggle<CR>
 nmap <leader>hl :call <SID>SynStack()<CR>
 noremap <F5> :mks! ~/.vim/session/session_1<CR>
 noremap <F6> :mks! ~/.vim/session/session_2<CR>

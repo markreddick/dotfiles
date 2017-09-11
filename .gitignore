@@ -11,3 +11,6 @@ Thumbs.db
 
 # tag files
 tags
+
+# VIM undo files
+vim/undo/
