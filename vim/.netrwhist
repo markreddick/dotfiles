@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/mreddick/code/release/application/modules/dashboard/controllers/iSpy'
-let g:netrw_dirhist_2='/home/mreddick/code/release/application/modules/dashboard/controllers/leads'
-let g:netrw_dirhist_3='/home/mreddick/code/release'
-let g:netrw_dirhist_4='/home/mreddick/code/release/application/modules/dashboard/controllers/leadgroups'
-let g:netrw_dirhist_5='/home/mreddick/code/release'
