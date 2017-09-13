@@ -6,8 +6,8 @@ set t_Co=256
 "colorscheme solarized
 "colorscheme wombat256mod
 "colorscheme mer-blue-bg
-colorscheme mer-blue
-"colorscheme mer-easy-custom
+"colorscheme mer-blue
+colorscheme mer-easy-custom
 "colorscheme mer-minimal
 " turn off colors on cursor line - if we have line heighlighted in any way, it
 " turns special keys (tabs mainly) the "normal" color

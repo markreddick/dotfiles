@@ -238,19 +238,33 @@ hi! link phpSpecialFunction Normal
 
 " custom status line and tab bar
 
-let g:merSection1FG=40
-let g:merSection1BG=16
-let g:merSection2FG=255
-let g:merSection2BG=28
-let g:merMainFG=255
-let g:merMainBG=22
+" Matrix/green
+"let g:merSection1FG=40
+"let g:merSection1BG=16
+"let g:merSection2FG=255
+"let g:merSection2BG=28
+"let g:merMainFG=255
+"let g:merMainBG=22
+"let g:merVisualFG=255
+"let g:merVisualBG=202
+"let g:merInsertFG=254
+"let g:merInsertBG=28
+"let g:merInactiveFG=249
+"let g:merInactiveBG=237
+
+" LCARS
+let g:merSection1FG=16
+let g:merSection1BG=63
+let g:merSection2FG=16
+let g:merSection2BG=99
+let g:merMainFG=16
+let g:merMainBG=208
 let g:merVisualFG=255
 let g:merVisualBG=202
 let g:merInsertFG=254
 let g:merInsertBG=28
 let g:merInactiveFG=249
 let g:merInactiveBG=237
-
 
 "exec 'hi MERNormalSection ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
 "exec 'hi MERNormalSectionSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
