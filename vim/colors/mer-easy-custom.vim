@@ -39,28 +39,29 @@ fun! s:X(...)
 endfun
 
 let s:bg_color = 16
-call s:X('merBaseColor', 40, s:bg_color)
-call s:X('merCommentColor', 230)
+call s:X('merBaseColor', 47, s:bg_color)
+call s:X('merCommentColor', 28)
 call s:X('merKeywordColor', 40)
-call s:X('merInvisiblesColor', 22)
-call s:X('merHighlightColor1', 42)
+call s:X('merInvisiblesColor', 235)
+call s:X('merHighlightColor1', 82)
 call s:X('merHighlightColor2', 42)
 call s:X('merMatchColor', '', '', 'reverse')
-call s:X('merRulerColor', '', 16)
-call s:X('merErrorColor', 4)
+call s:X('merRulerColor', '', 233)
+call s:X('merErrorColor', 118)
 
 "call s:X('Normal', 40, s:bg_color)
 "call s:X('SpecialKey', 22) "spaces/tabs
 
 hi! link Normal merBaseColor
 hi! link SpecialKey merInvisiblesColor
+hi! link NONE Normal
 
 hi! link Directory Normal
 hi! link LineNr Normal
 hi! link CursorLineNr Normal
 hi! link MoreMsg Normal
 hi! link Question Normal
-hi! link Search Normal
+hi! link Search merMatchColor
 
 hi! link Title Normal
 hi! link WarningMsg Normal
@@ -184,7 +185,7 @@ hi! link Identifier Normal
 hi! link PreProc Normal
 hi! link Operator Structure
 " Define == Keyword ??
-hi! link Define Noraml
+hi! link Define Normal
 hi! link Structure Normal
 "call s:X('String', 84)
 hi link String merHighlightColor1
@@ -200,6 +201,7 @@ hi! link Type Normal
 hi! link Include Normal
 
 " PHP
+hi! link phpRegion Normal
 hi! link phpKeyword Statement
 "call s:X('phpStringSingle', 36)
 "call s:X('phpStringDouble', 84)
@@ -210,9 +212,9 @@ hi! link phpDefine Define
 hi! link phpMethods Function
 hi! link phpFunctions Function
 hi! link phpBaselib Function
-hi! link phpBackslashSequences SpecialChar
-hi! link phpBackslashDoubleQuote SpecialChar
-hi! link phpBackslashSingleQuote SpecialChar
+hi! link phpBackslashSequences Normal 
+hi! link phpBackslashDoubleQuote phpStringDouble
+hi! link phpBackslashSingleQuote phpStringSingle
 hi! link phpParent Delimiter
 hi! link phpBrackets Delimiter
 hi! link phpIdentifierConst Delimiter
@@ -227,6 +229,54 @@ hi! link phpRelation Normal
 hi! link phpVarSelector Normal
 hi! link phpMethodsVar Normal
 hi! link phpSpecialFunction Normal
+
+
+
+
+
+
+
+" custom status line and tab bar
+
+let g:merSection1FG=40
+let g:merSection1BG=16
+let g:merSection2FG=255
+let g:merSection2BG=28
+let g:merMainFG=255
+let g:merMainBG=22
+let g:merVisualFG=255
+let g:merVisualBG=202
+let g:merInsertFG=254
+let g:merInsertBG=28
+let g:merInactiveFG=249
+let g:merInactiveBG=237
+
+
+"exec 'hi MERNormalSection ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+"exec 'hi MERNormalSectionSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"exec 'hi MERVisualSection ctermfg=' . s:merVisualFG . ' ctermbg=' . s:merVisualBG . ' cterm=NONE'
+"exec 'hi MERVisualSectionSep ctermfg=' . s:merVisualBG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"exec 'hi MERInsertSection ctermfg=' . s:merInsertFG . ' ctermbg=' . s:merInsertBG . ' cterm=NONE'
+"exec 'hi MERInsertSectionSep ctermfg=' . s:merInsertBG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+ 
+"exec 'hi MERMain ctermfg=' . s:merMainFG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+"exec 'hi MERInactive ctermfg=' . s:merInactiveFG . ' ctermbg=' . s:merInactiveBG . ' cterm=NONE'
+"exec 'hi MERSection1 ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+"exec 'hi MERSection1Sep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"exec 'hi MERSection2 ctermfg=' . s:merSection2FG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"exec 'hi MERSection2Sep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+
+"exec 'hi MERTabMain ctermfg=' . s:merMainFG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+"exec 'hi MERTab ctermfg=' . s:merSection2FG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"exec 'hi MERTabSep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+"exec 'hi MERLastTabSep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+"exec 'hi MERCurrentTab ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
+"exec 'hi MERCurrentTabSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
+"exec 'hi MERCurrentLastTabSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
+
+
+
+
 
 
 " delete functions
