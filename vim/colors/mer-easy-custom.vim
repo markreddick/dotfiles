@@ -38,6 +38,7 @@ fun! s:X(...)
  "	\ " cterm=".attr
 endfun
 
+" Matrix - Green
 let s:bg_color = 16
 call s:X('merBaseColor', 47, s:bg_color)
 call s:X('merCommentColor', 28)
@@ -48,6 +49,19 @@ call s:X('merHighlightColor2', 42)
 call s:X('merMatchColor', '', '', 'reverse')
 call s:X('merRulerColor', '', 233)
 call s:X('merErrorColor', 118)
+
+" Amber 
+let s:bg_color = 16
+call s:X('merBaseColor', 208, s:bg_color)
+call s:X('merCommentColor', 202)
+call s:X('merKeywordColor', 214)
+call s:X('merInvisiblesColor', 235)
+call s:X('merHighlightColor1', 226)
+call s:X('merHighlightColor2', 184)
+call s:X('merMatchColor', '', '', 'reverse')
+call s:X('merRulerColor', '', 233)
+call s:X('merErrorColor', 196)
+
 
 "call s:X('Normal', 40, s:bg_color)
 "call s:X('SpecialKey', 22) "spaces/tabs
@@ -265,6 +279,21 @@ let g:merInsertFG=254
 let g:merInsertBG=28
 let g:merInactiveFG=249
 let g:merInactiveBG=237
+
+" amber
+let g:merSection1FG=16
+let g:merSection1BG=214
+let g:merSection2FG=16
+let g:merSection2BG=208
+let g:merMainFG=16
+let g:merMainBG=202
+let g:merVisualFG=255
+let g:merVisualBG=202
+let g:merInsertFG=254
+let g:merInsertBG=28
+let g:merInactiveFG=249
+let g:merInactiveBG=237
+
 
 "exec 'hi MERNormalSection ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
 "exec 'hi MERNormalSectionSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
