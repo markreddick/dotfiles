@@ -34,6 +34,7 @@ set ruler													" show cursor position in status bar
 set number													" show line numbers on left
 set nofoldenable											" don't allow code folding
 set scrolloff=3												" scroll the window so we can always see x lines around the cursor
+"set fillchars=vert:\ 
 "set cursorline												" highlight the current line // NOTE: THIS SEEMS TO GREATLY SLOW DOWN SCROLLING IF ENABLED
 "set nowrap													" don't wrap lines
 set wrap													" wrap lines
@@ -286,10 +287,14 @@ let g:LCARSBrightPurple = 14
 let g:LCARSOrange = 7
 let g:LCARSBrightOrange = 15
 
+" color the split divider
+"hi VertSplit ctermfg=0 ctermbg=0 cterm=NONE
 
-exec 'hi LCARSOrange ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSBrightOrange . ' cterm=NONE'
 exec 'hi LCARSText ctermfg=' . g:LCARSOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSOrange ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSBrightOrange . ' cterm=NONE'
 exec 'hi LCARSOrangeEnd ctermfg=' . g:LCARSBrightOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSViolet ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSViolet . ' cterm=NONE'
+exec 'hi LCARSVioletEnd ctermfg=' . g:LCARSViolet . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
 
 function! ActiveStatus()
   let sl = ""
@@ -307,13 +312,13 @@ function! ActiveStatus()
   let sl .= "%#LCARSOrange#""
   let sl .= " "
   let sl .= "%#LCARSOrangeEnd#\ue0b4"
-  let sl .= "0 = \ue0b0 1 = \ue0b1 2 = \ue0b2 3 = \ue0b3 4 = \ue0b4 5 = \ue0b5 6 = \ue0b6 7 = \ue0b7 8 = \ue0b8"
+  "let sl .= "0 = \ue0b0 1 = \ue0b1 2 = \ue0b2 3 = \ue0b3 4 = \ue0b4 5 = \ue0b5 6 = \ue0b6 7 = \ue0b7 8 = \ue0b8"
 
   return sl
 
 endfunction
 
-function! InactiveStatus()
+function! InactiveStatusOLD()
   let sl=""
   let sl.="%#MERInactive#"
   let sl.=" %n:%t %r%m"
@@ -321,6 +326,27 @@ function! InactiveStatus()
   let sl.="%="
   let sl.=" %4l:%-3c "
   return sl
+endfunction
+
+function! InactiveStatus()
+  let sl = ""
+  let sl .= "%#LCARSVioletEnd#\ue0b6"
+  let sl .= "%#LCARSViolet#"
+  let sl .= " "
+  let sl .= "%#LCARSText#"
+  let sl .= " "
+  let sl .= "%#LCARSViolet#"
+  let sl .= " %f"
+  let sl .= "%<"
+  let sl .= "%="
+  let sl .= "%#LCARSText#"
+  let sl .= " "
+  let sl .= "%#LCARSViolet#""
+  let sl .= " "
+  let sl .= "%#LCARSVioletEnd#\ue0b4"
+
+  return sl
+
 endfunction
 
 function! GetMode()
