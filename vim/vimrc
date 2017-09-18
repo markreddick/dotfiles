@@ -35,6 +35,7 @@ set number													" show line numbers on left
 set nofoldenable											" don't allow code folding
 set scrolloff=3												" scroll the window so we can always see x lines around the cursor
 set fillchars=vert:\ 
+"set fillchars=vert:│
 "set cursorline												" highlight the current line // NOTE: THIS SEEMS TO GREATLY SLOW DOWN SCROLLING IF ENABLED
 "set nowrap													" don't wrap lines
 set wrap													" wrap lines
