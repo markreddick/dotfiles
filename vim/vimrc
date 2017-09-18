@@ -34,7 +34,7 @@ set ruler													" show cursor position in status bar
 set number													" show line numbers on left
 set nofoldenable											" don't allow code folding
 set scrolloff=3												" scroll the window so we can always see x lines around the cursor
-"set fillchars=vert:\ 
+set fillchars=vert:\ 
 "set cursorline												" highlight the current line // NOTE: THIS SEEMS TO GREATLY SLOW DOWN SCROLLING IF ENABLED
 "set nowrap													" don't wrap lines
 set wrap													" wrap lines
@@ -289,6 +289,11 @@ let g:LCARSBrightOrange = 15
 
 " color the split divider
 "hi VertSplit ctermfg=0 ctermbg=0 cterm=NONE
+
+" set the normal statusline colors to LCARS colors as this will be used by VIM
+" when drawing the space between statusbars of adjacent splits
+exec 'hi StatusLine ctermfg=' . g:LCARSBrightOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi StatusLineNC ctermfg=' . g:LCARSViolet . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
 
 exec 'hi LCARSText ctermfg=' . g:LCARSOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
 exec 'hi LCARSOrange ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSBrightOrange . ' cterm=NONE'
