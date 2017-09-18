@@ -129,6 +129,13 @@ augroup autoquickfix
   autocmd QuickFixCmdPost 1* lwindow
 augroup END
 
+
+augroup relativenumbertoggle
+  autocmd!
+  autocmd WinEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd WinLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+
 execute pathogen#infect()
 
 " enable PHP autocomplete for all PHP files
@@ -378,6 +385,7 @@ set statusline=%!ActiveStatus()
 
 autocmd WinEnter * setlocal statusline=%!ActiveStatus()
 autocmd WinLeave * setlocal statusline=%!InactiveStatus()
+
 
 function! MyTabLine()
 
