@@ -215,7 +215,7 @@ exec 'hi MERCurrentTab ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1
 exec 'hi MERCurrentTabSep ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
 exec 'hi MERCurrentLastTabSep ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
 
-function! ActiveStatus()
+function! ActiveStatusOLD()
   let sl=""
 "
   if mode() == 'n'
@@ -248,35 +248,70 @@ function! ActiveStatus()
   return sl
 endfunction
 
-let g:LCARSBackground = 16
-let g:LCARSOrange = 208
-let g:LCARSMauve = 177
-let g:LCARSCrimson = 167
-let g:LCARSSky = 117
-let g:LCARSBlue = 63
-let g:LCARSAgua = 67
-let g:LCARSPurple = 99
-let g:LCARSPeach = 209
-let g:LCARSMagenta = 169
-let g:LCARSMelon = 223
-let g:LCARSSlate = 105
-let g:LCARSBurnt = 180
-let g:LCARSYellow = 222
-let g:LCARSGray = 60
-let g:LCARS$ed = 196
-let g:LCARSMaroon = 160
-let g:LCARSPowder = 147
+"let g:LCARSBlack = 16
+"let g:LCARSOrange = 208
+"let g:LCARSMauve = 177
+"let g:LCARSCrimson = 167
+"let g:LCARSSky = 117
+"let g:LCARSBlue = 63
+"let g:LCARSAgua = 67
+"let g:LCARSPurple = 99
+"let g:LCARSPeach = 209
+"let g:LCARSMagenta = 169
+"let g:LCARSMelon = 223
+"let g:LCARSSlate = 105
+"let g:LCARSBurnt = 180
+"let g:LCARSYellow = 222
+"let g:LCARSGray = 60
+"let g:LCARSRed = 196
+"let g:LCARSMaroon = 160
+"let g:LCARSPowder = 147
+
+let g:LCARSBackground = 0
+
+let g:LCARSBlack = 0
+let g:LCARSBrightBlack = 8
+let g:LCARSRed = 1
+let g:LCARSBrightRed = 9
+let g:LCARSBlue = 2
+let g:LCARSBrightBlue = 10
+let g:LCARSYellow = 3
+let g:LCARSBrightYellow = 11
+let g:LCARSViolet = 4
+let g:LCARSBrightViolet = 12
+let g:LCARSMauve = 5
+let g:LCARSBrightMauve = 13
+let g:LCARSPurple = 6
+let g:LCARSBrightPurple = 14
+let g:LCARSOrange = 7
+let g:LCARSBrightOrange = 15
 
 
-let g:LCARSEndOrange  ctermfg=16 ctermbg=208 cterm=NONE
-
-
-exec 'hi LCARSOrange ctermfg=16 ctermbg=' . g:LCARSOrange . ' cterm=NONE'
-exec 'hi LCARSEndOrange ctermfg=' . g:LCARSOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSOrange ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSBrightOrange . ' cterm=NONE'
+exec 'hi LCARSText ctermfg=' . g:LCARSOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSOrangeEnd ctermfg=' . g:LCARSBrightOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
 
 function! ActiveStatus()
   let sl = ""
-  let sl .= "%#LCARSIcon#"
+  let sl .= "%#LCARSOrangeEnd#\ue0b6"
+  let sl .= "%#LCARSOrange#"
+  let sl .= " "
+  let sl .= "%#LCARSText#"
+  let sl .= " NORMAL "
+  let sl .= "%#LCARSOrange#"
+  let sl .= " %n:%f %r%m"
+  let sl .= "%<"
+  let sl .= "%="
+  let sl .= "%#LCARSText#"
+  let sl .= " "
+  let sl .= "%#LCARSOrange#""
+  let sl .= " "
+  let sl .= "%#LCARSOrangeEnd#\ue0b4"
+  let sl .= "0 = \ue0b0 1 = \ue0b1 2 = \ue0b2 3 = \ue0b3 4 = \ue0b4 5 = \ue0b5 6 = \ue0b6 7 = \ue0b7 8 = \ue0b8"
+
+  return sl
+
+endfunction
 
 function! InactiveStatus()
   let sl=""
