@@ -230,7 +230,7 @@ function! ActiveStatus()
 
   let sl.="%#MERSection2#"
   let sl.="%{GitBranchWithSymbol()}"
-  let sl.="%#MERSection2Sep#\ue0b0"
+  let sl.="%#MERSection2Sep#\ue0b4"
   let sl.="%#MERMain#"
   let sl.=" %n:%f %r%m"
   let sl.="%<"
@@ -247,6 +247,36 @@ function! ActiveStatus()
 "  let sl.=" %4l "
   return sl
 endfunction
+
+let g:LCARSBackground = 16
+let g:LCARSOrange = 208
+let g:LCARSMauve = 177
+let g:LCARSCrimson = 167
+let g:LCARSSky = 117
+let g:LCARSBlue = 63
+let g:LCARSAgua = 67
+let g:LCARSPurple = 99
+let g:LCARSPeach = 209
+let g:LCARSMagenta = 169
+let g:LCARSMelon = 223
+let g:LCARSSlate = 105
+let g:LCARSBurnt = 180
+let g:LCARSYellow = 222
+let g:LCARSGray = 60
+let g:LCARS$ed = 196
+let g:LCARSMaroon = 160
+let g:LCARSPowder = 147
+
+
+let g:LCARSEndOrange  ctermfg=16 ctermbg=208 cterm=NONE
+
+
+exec 'hi LCARSOrange ctermfg=16 ctermbg=' . g:LCARSOrange . ' cterm=NONE'
+exec 'hi LCARSEndOrange ctermfg=' . g:LCARSOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+
+function! ActiveStatus()
+  let sl = ""
+  let sl .= "%#LCARSIcon#"
 
 function! InactiveStatus()
   let sl=""
