@@ -64,12 +64,12 @@ call s:X('merErrorColor', 196)
 
 " LCARS  
 let s:bg_color = 16
-call s:X('merBaseColor', 15, s:bg_color)
-call s:X('merCommentColor', 12)
-call s:X('merKeywordColor', 7)
+call s:X('merBaseColor', 7, s:bg_color)
+call s:X('merCommentColor', 10)
+call s:X('merKeywordColor', 13)
 call s:X('merInvisiblesColor', 8)
 call s:X('merHighlightColor1', 3)
-call s:X('merHighlightColor2', 11)
+call s:X('merHighlightColor2', 6)
 call s:X('merMatchColor', '', '', 'reverse')
 call s:X('merRulerColor', '', 1)
 call s:X('merErrorColor', 9)
@@ -82,7 +82,7 @@ hi! link SpecialKey merInvisiblesColor
 hi! link NONE Normal
 
 hi! link Directory Normal
-hi! link LineNr merCommentColor 
+hi! link LineNr meInvisiblesColor 
 hi! link CursorLineNr Normal
 hi! link MoreMsg Normal
 hi! link Question Normal
@@ -203,13 +203,14 @@ hi! link Constant Normal
 "call s:X('Comment', 28)
 hi! link Comment merCommentColor
 hi! link Exception Noraml
-hi! link Boolean Noraml
-hi! link StorageClass Normal
+hi! link Boolean merKeywordColor 
+hi! link StorageClass merKeywordColor
 hi! link Error ErrorMsg
-hi! link Identifier Normal
+hi! link Identifier merKeywordColor
 hi! link PreProc Normal
-hi! link Operator Structure
+hi! link Operator merKeywordColor
 " Define == Keyword ??
+hi! link Keyword merKeywordColor
 hi! link Define Normal
 hi! link Structure Normal
 "call s:X('String', 84)
