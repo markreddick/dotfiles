@@ -332,7 +332,7 @@ function! ActiveStatus()
   let showpercentage = 1
   
   let filename = expand("%:p")
-  let gitbranch = expand("%{GitBranchWithSymbol()}")
+  let gitbranch = GitBranchWithSymbol()
 
   let staticdatalength = 61
   let datalength = staticdatalength + len(filename) + len(gitbranch)
