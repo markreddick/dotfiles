@@ -389,7 +389,6 @@ function! ActiveStatus()
 
   if showmode == 1
 
-
     if mode() == 'n'
       let sl .= "%#LCARSBlue# NORMAL "
     elseif mode() == 'v'
@@ -407,7 +406,7 @@ function! ActiveStatus()
   endif
 
   if showbranch == 1
-    let sl .= "%#LCARSOrange#"
+    let sl .= "%#LCARSViolet#"
     let sl .= gitbranch
   endif
 
@@ -587,7 +586,7 @@ function! MyTabLine()
 		let bufname = fnamemodify(bufname(bufnr), ':t')
 
 		let s .= '%' . tabnr . 'T'
-		let s .= (tabnr == tabpagenr() ? '%#LCARSBlue#' : '%#LCARSOrange#')
+		let s .= (tabnr == tabpagenr() ? '%#LCARSBlue#' : '%#LCARSYellow#')
 		let s .= ' ' . tabnr 
 
 		let n = tabpagewinnr(tabnr,'$')

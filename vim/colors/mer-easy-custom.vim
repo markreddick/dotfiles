@@ -62,6 +62,17 @@ call s:X('merMatchColor', '', '', 'reverse')
 call s:X('merRulerColor', '', 233)
 call s:X('merErrorColor', 196)
 
+" LCARS  
+let s:bg_color = 16
+call s:X('merBaseColor', 15, s:bg_color)
+call s:X('merCommentColor', 12)
+call s:X('merKeywordColor', 7)
+call s:X('merInvisiblesColor', 8)
+call s:X('merHighlightColor1', 3)
+call s:X('merHighlightColor2', 11)
+call s:X('merMatchColor', '', '', 'reverse')
+call s:X('merRulerColor', '', 1)
+call s:X('merErrorColor', 9)
 
 "call s:X('Normal', 40, s:bg_color)
 "call s:X('SpecialKey', 22) "spaces/tabs
@@ -71,7 +82,7 @@ hi! link SpecialKey merInvisiblesColor
 hi! link NONE Normal
 
 hi! link Directory Normal
-hi! link LineNr Normal
+hi! link LineNr merCommentColor 
 hi! link CursorLineNr Normal
 hi! link MoreMsg Normal
 hi! link Question Normal
@@ -281,18 +292,18 @@ let g:merInactiveFG=249
 let g:merInactiveBG=237
 
 " amber
-let g:merSection1FG=16
-let g:merSection1BG=214
-let g:merSection2FG=16
-let g:merSection2BG=208
-let g:merMainFG=16
-let g:merMainBG=202
-let g:merVisualFG=255
-let g:merVisualBG=202
-let g:merInsertFG=254
-let g:merInsertBG=28
-let g:merInactiveFG=249
-let g:merInactiveBG=237
+"let g:merSection1FG=16
+"let g:merSection1BG=214
+"let g:merSection2FG=16
+"let g:merSection2BG=208
+"let g:merMainFG=16
+"let g:merMainBG=202
+"let g:merVisualFG=255
+"let g:merVisualBG=202
+"let g:merInsertFG=254
+"let g:merInsertBG=28
+"let g:merInactiveFG=249
+"let g:merInactiveBG=237
 
 
 "exec 'hi MERNormalSection ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
