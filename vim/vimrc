@@ -316,44 +316,144 @@ exec 'hi LCARSYellow ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSYellow . ' 
 exec 'hi LCARSYellowEnd ctermfg=' . g:LCARSYellow . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
 exec 'hi LCARSBrightBlue ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSBrightBlue . ' cterm=NONE'
 exec 'hi LCARSBrightBlueEnd ctermfg=' . g:LCARSBrightBlue . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSRed ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSRed . ' cterm=NONE'
+exec 'hi LCARSRedEnd ctermfg=' . g:LCARSRed . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSMauve ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSMauve . ' cterm=NONE'
+exec 'hi LCARSMauveEnd ctermfg=' . g:LCARSMauve . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
 
 function! ActiveStatus()
+
+  let showfileformat = 1
+  let showfileencoding = 1
+  let showfiletype = 1
+  let showcursorpos = 1
+  let showbranch = 1
+  let showmode = 1
+  let showpercentage = 1
+  
+  let filename = expand("%:p")
+  let gitbranch = "%{GitBranchWithSymbol()}"
+
+  let staticdatalength = 61
+  let datalength = staticdatalength + len(filename) + len(gitbranch)
+
+  if datalength > winwidth(0)
+    let filename = expand("%:p:t")
+	let datalength = staticdatalength + len(filename) + len(gitbranch)
+  endif
+
+  if datalength > winwidth(0)
+    let showfileformat = 0
+	let datalength = datalength - 7
+  endif
+
+  if datalength > winwidth(0)
+    let showfiletype = 0
+	let datalength = datalength - 11
+  endif
+
+  if datalength > winwidth(0)
+    let showfileencoding = 0
+	let datalength = datalength - 10
+  endif
+
+  if datalength > winwidth(0)
+    let showpercentage = 0
+	let datalength = datalength - 6
+  endif
+
+  if datalength > winwidth(0)
+    let showcursorpos = 0
+	let datalength = datalength - 11
+  endif
+
+  if datalength > winwidth(0)
+    let showbranch = 0
+	let datalength = datalength - len(gitbranch)
+  endif
+
+  if datalength > winwidth(0)
+    let showmode = 0
+	let datalength = datalength - 9
+  endif
+
+
+
   let sl = ""
   let sl .= "%#LCARSOrangeEnd#\ue0b6"
   let sl .= "%#LCARSOrange#"
   let sl .= " "
-  let sl .= "%#LCARSBlueEnd#"
-  let sl .= " "
-  let sl .= "%#LCARSBlue#"
-  let sl .= " NORMAL "
-  let sl .= "%#LCARSBlueEnd#"
-  let sl .= " "
-  let sl .= "%#LCARSOrange#"
-  let sl .= "%<"
-  let sl .= "%{GitBranchWithSymbol()}"
   let sl .= "%#LCARSText#"
-  let sl .= " %n:%f %r%m "
+  let sl .= " "
+  let sl .= "%<"
+
+  if showmode == 1
+
+
+    if mode() == 'n'
+      let sl .= "%#LCARSBlue# NORMAL "
+    elseif mode() == 'v'
+      let sl .= "%#LCARSYellow# VISUAL "
+    elseif mode() == 'i'
+      let sl .= "%#LCARSRed# INSERT "
+    else
+      let sl .= "%#LCARSBlue# " . mode() . " "
+    endif
+
+"    let sl .= "%#LCARSBlue#"
+"    let sl .= " NORMAL "
+    let sl .= "%#LCARSText#"
+    let sl .= " "
+  endif
+
+  if showbranch == 1
+    let sl .= "%#LCARSOrange#"
+    let sl .= gitbranch
+  endif
+
+  let sl .= "%#LCARSText#"
+  let sl .= " %n:" . filename . " %r%m "
   let sl .= "%#LCARSOrange#"
   let sl .= "%="
   let sl .= "%#LCARSText#"
   let sl .= " "
-  let sl .= "%#LCARSPurple#"
-  let sl .= " %{&fileformat} "
-  let sl .= "%#LCARSText#"
-  let sl .= " "
-  let sl .= "%#LCARSYellow#"
-  let sl .= " %{&fileencoding?&fileencoding:&encoding} "
-  let sl .= "%#LCARSText#"
-  let sl .= " "
-  let sl .= "%#LCARSBrightBlue#"
-  let sl .= " %Y "
-  let sl .= "%#LCARSText#"
-  let sl .= " "
-  let sl .= "%#LCARSViolet#""
-  let sl .= " %4l:%-3c "
-  let sl .= "%#LCARSText#"
-  let sl .= " "
-  let sl .= "%#LCARSOrange#""
+
+  if showfileformat == 1
+    let sl .= "%#LCARSPurple#"
+    let sl .= " %{&fileformat} "
+    let sl .= "%#LCARSText#"
+    let sl .= " "
+  endif
+
+  if showfileencoding == 1
+    let sl .= "%#LCARSYellow#"
+    let sl .= " %{&fileencoding?&fileencoding:&encoding} "
+    let sl .= "%#LCARSText#"
+    let sl .= " "
+  endif
+
+  if showfiletype == 1
+    let sl .= "%#LCARSBrightBlue#"
+    let sl .= " %Y "
+    let sl .= "%#LCARSText#"
+    let sl .= " "
+  endif
+
+  if showpercentage == 1
+    let sl .= "%#LCARSMauve#"
+    let sl.="%4p%% "
+    let sl .= "%#LCARSText#"
+    let sl .= " "
+  endif
+
+  if showcursorpos == 1
+    let sl .= "%#LCARSViolet#"
+    let sl .= " %4l:%-3c "
+    let sl .= "%#LCARSText#"
+    let sl .= " "
+  endif
+
+  let sl .= "%#LCARSOrange#"
   let sl .= " "
   let sl .= "%#LCARSOrangeEnd#\ue0b4"
 
@@ -379,8 +479,8 @@ function! InactiveStatus()
   let sl .= "%#LCARSText#"
   let sl .= " "
   let sl .= "%#LCARSViolet#"
-  let sl .= " %f"
-  let sl .= "%<"
+  let sl .= " %<"
+  let sl .= "%F"
   let sl .= "%="
   let sl .= "%#LCARSText#"
   let sl .= " "
