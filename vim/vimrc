@@ -308,24 +308,54 @@ exec 'hi LCARSOrange ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSBrightOrang
 exec 'hi LCARSOrangeEnd ctermfg=' . g:LCARSBrightOrange . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
 exec 'hi LCARSViolet ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSViolet . ' cterm=NONE'
 exec 'hi LCARSVioletEnd ctermfg=' . g:LCARSViolet . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSBlue ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSBlue . ' cterm=NONE'
+exec 'hi LCARSBlueEnd ctermfg=' . g:LCARSBlue . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSPurple ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSPurple . ' cterm=NONE'
+exec 'hi LCARSPurpleEnd ctermfg=' . g:LCARSPurple . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSYellow ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSYellow . ' cterm=NONE'
+exec 'hi LCARSYellowEnd ctermfg=' . g:LCARSYellow . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
+exec 'hi LCARSBrightBlue ctermfg=' . g:LCARSBlack . ' ctermbg=' . g:LCARSBrightBlue . ' cterm=NONE'
+exec 'hi LCARSBrightBlueEnd ctermfg=' . g:LCARSBrightBlue . ' ctermbg=' . g:LCARSBackground . ' cterm=NONE'
 
 function! ActiveStatus()
   let sl = ""
   let sl .= "%#LCARSOrangeEnd#\ue0b6"
   let sl .= "%#LCARSOrange#"
   let sl .= " "
-  let sl .= "%#LCARSText#"
+  let sl .= "%#LCARSBlueEnd#"
+  let sl .= " "
+  let sl .= "%#LCARSBlue#"
   let sl .= " NORMAL "
+  let sl .= "%#LCARSBlueEnd#"
+  let sl .= " "
   let sl .= "%#LCARSOrange#"
-  let sl .= " %n:%f %r%m"
   let sl .= "%<"
+  let sl .= "%{GitBranchWithSymbol()}"
+  let sl .= "%#LCARSText#"
+  let sl .= " %n:%f %r%m "
+  let sl .= "%#LCARSOrange#"
   let sl .= "%="
+  let sl .= "%#LCARSText#"
+  let sl .= " "
+  let sl .= "%#LCARSPurple#"
+  let sl .= " %{&fileformat} "
+  let sl .= "%#LCARSText#"
+  let sl .= " "
+  let sl .= "%#LCARSYellow#"
+  let sl .= " %{&fileencoding?&fileencoding:&encoding} "
+  let sl .= "%#LCARSText#"
+  let sl .= " "
+  let sl .= "%#LCARSBrightBlue#"
+  let sl .= " %Y "
+  let sl .= "%#LCARSText#"
+  let sl .= " "
+  let sl .= "%#LCARSViolet#""
+  let sl .= " %4l:%-3c "
   let sl .= "%#LCARSText#"
   let sl .= " "
   let sl .= "%#LCARSOrange#""
   let sl .= " "
   let sl .= "%#LCARSOrangeEnd#\ue0b4"
-  "let sl .= "0 = \ue0b0 1 = \ue0b1 2 = \ue0b2 3 = \ue0b3 4 = \ue0b4 5 = \ue0b5 6 = \ue0b6 7 = \ue0b7 8 = \ue0b8"
 
   return sl
 
@@ -387,7 +417,7 @@ autocmd WinEnter * setlocal statusline=%!ActiveStatus()
 autocmd WinLeave * setlocal statusline=%!InactiveStatus()
 
 
-function! MyTabLine()
+function! MyTabLineOLD()
 
 	let s = ''
 	
@@ -436,6 +466,55 @@ function! MyTabLine()
 		let s .= "%#MERLastTabSep#\ue0b2"
 		let s .= '%#MERTab#%999X X '
 	endif
+	
+	return s
+
+endfunction
+
+function! MyTabLine()
+
+	let s = ''
+	
+	let s .= "%#LCARSOrangeEnd#\ue0b6"
+	let s .= "%#LCARSOrange#"
+	let s .= " %#LCARSText# "
+	
+	for i in range(tabpagenr('$'))
+		let tabnr = i + 1 " range() starts at 0
+		let winnr = tabpagewinnr(tabnr)
+		let buflist = tabpagebuflist(tabnr)
+		let bufnr = buflist[winnr - 1]
+		let bufname = fnamemodify(bufname(bufnr), ':t')
+
+		let s .= '%' . tabnr . 'T'
+		let s .= (tabnr == tabpagenr() ? '%#LCARSBlue#' : '%#LCARSOrange#')
+		let s .= ' ' . tabnr 
+
+		let n = tabpagewinnr(tabnr,'$')
+		if n > 1 | let s .= ':' . n | endif
+
+		let bufmodified = getbufvar(bufnr, "&mod")
+		if bufmodified | let s .= '+' | endif
+	
+		let s .= empty(bufname) ? ' [No Name] ' : ' ' . bufname . ' '
+
+		let s .= "%#LCARSText#"
+		let s .= " "
+
+	endfor
+
+	" after the last tab fill with TabLineFill and reset tab page nr
+	let s .= '%#LCARSOrange#%T'
+	let s .= '%='
+
+	if tabpagenr('$') > 1
+		let s .= "%#LCARSText# "
+		let s .= '%#LCARSBlue#%999X X '
+	endif
+
+	let s .= "%#LCARSText# "
+	let s .= "%#LCARSOrange# "
+	let s .= "%#LCARSOrangeEnd#\ue0b4"
 	
 	return s
 
