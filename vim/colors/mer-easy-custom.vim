@@ -65,13 +65,13 @@ call s:X('merErrorColor', 196)
 " LCARS  
 let s:bg_color = 16
 call s:X('merBaseColor', 7, s:bg_color)
-call s:X('merCommentColor', 10)
-call s:X('merKeywordColor', 13)
-call s:X('merInvisiblesColor', 8)
-call s:X('merHighlightColor1', 3)
+call s:X('merCommentColor', 8)
+call s:X('merKeywordColor', 3)
+call s:X('merInvisiblesColor', 236)
+call s:X('merHighlightColor1', 2)
 call s:X('merHighlightColor2', 6)
 call s:X('merMatchColor', '', '', 'reverse')
-call s:X('merRulerColor', '', 1)
+call s:X('merRulerColor', '', 236)
 call s:X('merErrorColor', 9)
 
 "call s:X('Normal', 40, s:bg_color)
@@ -199,32 +199,32 @@ hi! link xmlProcessingDelim xmlAttrib
 
 
 " programming
-hi! link Constant Normal
+hi! link Constant merKeywordColor 
 "call s:X('Comment', 28)
 hi! link Comment merCommentColor
 hi! link Exception Noraml
 hi! link Boolean merKeywordColor 
 hi! link StorageClass merKeywordColor
 hi! link Error ErrorMsg
-hi! link Identifier merKeywordColor
+hi! link Identifier Normal
 hi! link PreProc Normal
 hi! link Operator merKeywordColor
 " Define == Keyword ??
 hi! link Keyword merKeywordColor
-hi! link Define Normal
+hi! link Define merkeywordColor 
 hi! link Structure Normal
 "call s:X('String', 84)
 hi link String merHighlightColor1
 hi! link StringDelimiter Normal
-hi! link Number Normal
-hi! link Float Normal
-hi! link Function Normal
+hi! link Number merKeywordColor
+hi! link Float merKeywordColor
+hi! link Function merKeywordColor
 hi! link Repeat Normal
-hi! link Conditional Normal
+hi! link Conditional merKeywordColor 
 hi! link Label Normal
-hi! link Statement Normal
-hi! link Type Normal
-hi! link Include Normal
+hi! link Statement merKeywordColor 
+hi! link Type merKeywordColor 
+hi! link Include merKeywordColor
 
 " PHP
 hi! link phpRegion Normal
@@ -252,9 +252,11 @@ hi! link phpNull Constant
 hi! link phpArrayPair Operator
 hi! link phpOperator Normal
 hi! link phpRelation Normal
-hi! link phpVarSelector Normal
+hi! link phpVarSelector merKeywordColor 
 hi! link phpMethodsVar Normal
-hi! link phpSpecialFunction Normal
+hi! link phpSpecialFunction  Function
+hi! link phpRepeat Operator
+
 
 
 
