@@ -2,6 +2,13 @@ scriptencoding utf-8
 syntax on
 " enable 256 color
 set t_Co=256
+
+
+"customize the 'mer-easy-custom' colorscheme
+source ~/.vim/mer-easy-custom-overrides.vim
+call MERCustomOverride('lcars')
+"let g:merBackgroundColor = 4
+
 "colorscheme jellybeans 
 "colorscheme solarized
 "colorscheme wombat256mod
@@ -189,5 +196,5 @@ source ~/.vim/mer-lines.vim
 "source ~/.vim/lcars-lines.vim
 
 "customize the 'mer-easy-custom' colorscheme
-source ~/.vim/mer-easy-custom-overrides.vim
-call MERCustomOverride('blue')
+"source ~/.vim/mer-easy-custom-overrides.vim
+"call MERCustomOverride('blue')

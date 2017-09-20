@@ -38,17 +38,34 @@ fun! s:X(...)
  "	\ " cterm=".attr
 endfun
 
+fun! s:SetVar(varName, varValue)
+  if !exists("{a:varName}")
+    let {a:varName} = a:varValue
+  endif
+endfunc
+
+call s:SetVar('g:merBackgroundColor', 16)
+call s:SetVar('g:merNormalColor', 47)
+call s:SetVar('g:merCommentColor', 28)
+call s:SetVar('g:merKeywordColor', 40)
+call s:SetVar('g:merInvisiblesColor', 235)
+call s:SetVar('g:merHighlightColor1', 82)
+call s:SetVar('g:merHighlightColor2', 42)
+call s:SetVar('g:merRulerColor', 233)
+call s:SetVar('g:merErrorColor', 118)
+
 " Matrix - Green
-let s:bg_color = 16
-call s:X('merBaseColor', 47, s:bg_color)
-call s:X('merCommentColor', 28)
-call s:X('merKeywordColor', 40)
-call s:X('merInvisiblesColor', 235)
-call s:X('merHighlightColor1', 82)
-call s:X('merHighlightColor2', 42)
+"let s:bg_color = 16
+call s:X('Normal', g:merNormalColor, g:merBackgroundColor)
+call s:X('merBaseColor', g:merNormalColor, g:merBackgroundColor)
+call s:X('merCommentColor', g:merCommentColor)
+call s:X('merKeywordColor', g:merKeywordColor)
+call s:X('merInvisiblesColor', g:merInvisiblesColor)
+call s:X('merHighlightColor1', g:merHighlightColor1)
+call s:X('merHighlightColor2', g:merHighlightColor2)
 call s:X('merMatchColor', '', '', 'reverse')
-call s:X('merRulerColor', '', 233)
-call s:X('merErrorColor', 118)
+call s:X('merRulerColor', '', g:merRulerColor)
+call s:X('merErrorColor', g:merErrorColor)
 
 "call s:X('Normal', 40, s:bg_color)
 "call s:X('SpecialKey', 22) "spaces/tabs
@@ -110,7 +127,7 @@ call s:X('StatusLineNC', 247, 232)
 call s:X('VertSplit', 244)
 
 " cursor 
-call s:X('Cursor', s:bg_color, 21)
+call s:X('Cursor', g:merBackgroundColor, 21)
 call s:X('CursorLine', '', 243)
 call s:X('CursorColumn', '', 243)
 
