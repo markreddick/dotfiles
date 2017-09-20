@@ -192,8 +192,9 @@ noremap <F12> :source ~/.vim/session/session_4<CR>
 nnoremap <TAB> <C-W>w
 nnoremap <s-TAB> <C-W>W
 
-source ~/.vim/mer-lines.vim
-"source ~/.vim/lcars-lines.vim
+"source ~/.vim/mer-lines.vim
+"let g:LCARS256 = 1
+source ~/.vim/lcars-lines.vim
 
 "customize the 'mer-easy-custom' colorscheme
 "source ~/.vim/mer-easy-custom-overrides.vim

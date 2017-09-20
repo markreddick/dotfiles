@@ -8,28 +8,27 @@ function! GitBranchWithSymbol()
   endif
 endfunction
 
-"let g:LCARSBlack = 16
-"let g:LCARSOrange = 208
-"let g:LCARSMauve = 177
+"let g:LCARSBlack = 16		x
+"let g:LCARSOrange = 208	x
+"let g:LCARSMauve = 177		x
 "let g:LCARSCrimson = 167
-"let g:LCARSSky = 117
+"let g:LCARSSky = 117		x
 "let g:LCARSBlue = 63
-"let g:LCARSAgua = 67
-"let g:LCARSPurple = 99
-"let g:LCARSPeach = 209
-"let g:LCARSMagenta = 169
-"let g:LCARSMelon = 223
-"let g:LCARSSlate = 105
+"let g:LCARSAgua = 67		x
+"let g:LCARSPurple = 99		x
+"let g:LCARSPeach = 209		x
+"let g:LCARSMagenta = 169	x
+"let g:LCARSMelon = 223		x
+"let g:LCARSSlate = 105		x
 "let g:LCARSBurnt = 180
-"let g:LCARSYellow = 222
-"let g:LCARSGray = 60
-"let g:LCARSRed = 196
-"let g:LCARSMaroon = 160
-"let g:LCARSPowder = 147
+"let g:LCARSYellow = 222	x
+"let g:LCARSGray = 60		x
+"let g:LCARSRed = 196		x
+"let g:LCARSMaroon = 160`	x
+"let g:LCARSPowder = 147	x
 
-
+    
 let g:LCARSBackground = 0
-
 let g:LCARSBlack = 0
 let g:LCARSBrightBlack = 8
 let g:LCARSRed = 1
@@ -46,6 +45,28 @@ let g:LCARSPurple = 6
 let g:LCARSBrightPurple = 14
 let g:LCARSOrange = 7
 let g:LCARSBrightOrange = 15
+
+if exists('g:LCARS256') 
+  if g:LCARS256 == 1
+    let g:LCARSBackground = 16
+    let g:LCARSBlack = 16
+    let g:LCARSBrightBlack = 60
+    let g:LCARSRed = 160
+    let g:LCARSBrightRed = 196 
+    let g:LCARSBlue = 117
+    let g:LCARSBrightBlue = 67 
+    let g:LCARSYellow = 223
+    let g:LCARSBrightYellow = 222
+    let g:LCARSViolet = 105
+    let g:LCARSBrightViolet = 177
+    let g:LCARSMauve = 169
+    let g:LCARSBrightMauve = 167
+    let g:LCARSPurple = 99
+    let g:LCARSBrightPurple = 147
+    let g:LCARSOrange = 209
+    let g:LCARSBrightOrange = 208
+  endif
+endif
 
 " color the split divider
 "hi VertSplit ctermfg=0 ctermbg=0 cterm=NONE
