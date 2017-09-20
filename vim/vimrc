@@ -389,13 +389,13 @@ function! ActiveStatus()
   if showmode == 1
 
     if mode() == 'n'
-      let sl .= "%#LCARSBlue# NORMAL "
+      let sl .= "%#LCARSVioletEnd# NORMAL "
     elseif mode() == 'v'
-      let sl .= "%#LCARSYellow# VISUAL "
+      let sl .= "%#LCARSYellowEnd# VISUAL "
     elseif mode() == 'i'
-      let sl .= "%#LCARSRed# INSERT "
+      let sl .= "%#LCARSRedEnd# INSERT "
     else
-      let sl .= "%#LCARSBlue# " . mode() . " "
+      let sl .= "%#LCARSBlueEnd# " . mode() . " "
     endif
 
 "    let sl .= "%#LCARSBlue#"
@@ -405,12 +405,16 @@ function! ActiveStatus()
   endif
 
   if showbranch == 1
-    let sl .= "%#LCARSViolet#"
+    let sl .= "%#LCARSOrange#"
     let sl .= gitbranch
+	let sl .= "%#LCARSText#"
+	let sl .= " "
   endif
 
-  let sl .= "%#LCARSText#"
+  let sl .= "%#LCARSYellow#"
   let sl .= " %n:" . filename . " %r%m "
+  let sl .= "%#LCARSText#"
+  let sl .= " "
   let sl .= "%#LCARSOrange#"
   let sl .= "%="
   let sl .= "%#LCARSText#"
@@ -475,10 +479,10 @@ function! InactiveStatus()
   let sl .= "%#LCARSViolet#"
   let sl .= " "
   let sl .= "%#LCARSText#"
-  let sl .= " "
-  let sl .= "%#LCARSViolet#"
+"  let sl .= "%#LCARSViolet#"
   let sl .= " %<"
-  let sl .= "%F"
+  let sl .= "%F "
+  let sl .= "%#LCARSViolet#"
   let sl .= "%="
   let sl .= "%#LCARSText#"
   let sl .= " "
@@ -573,9 +577,9 @@ function! MyTabLine()
 
 	let s = ''
 	
-	let s .= "%#LCARSOrangeEnd#\ue0b6"
-	let s .= "%#LCARSOrange#"
-	let s .= " %#LCARSText# "
+"	let s .= "%#LCARSOrangeEnd#\ue0b6"
+"	let s .= "%#LCARSOrange#"
+"	let s .= " %#LCARSText# "
 	
 	for i in range(tabpagenr('$'))
 		let tabnr = i + 1 " range() starts at 0
@@ -585,34 +589,44 @@ function! MyTabLine()
 		let bufname = fnamemodify(bufname(bufnr), ':t')
 
 		let s .= '%' . tabnr . 'T'
-		let s .= (tabnr == tabpagenr() ? '%#LCARSBlue#' : '%#LCARSYellow#')
+		let s .= (tabnr == tabpagenr() ? "%#LCARSBlueEnd#\ue0b6%#LCARSBlue# " : "%#LCARSYellowEnd#\ue0b6%#LCARSYellow# ")
+		let s .= (tabnr == tabpagenr() ? "%#LCARSBlueEnd#" : "%#LCARSYellowEnd#")
 		let s .= ' ' . tabnr 
-
+	
 		let n = tabpagewinnr(tabnr,'$')
 		if n > 1 | let s .= ':' . n | endif
 
+		let s .= ' '
+
+		let s .= (tabnr == tabpagenr() ? "%#LCARSBlue#" : "%#LCARSYellow#")
+		
 		let bufmodified = getbufvar(bufnr, "&mod")
 		if bufmodified | let s .= '+' | endif
 	
 		let s .= empty(bufname) ? ' [No Name] ' : ' ' . bufname . ' '
 
+		let s .= (tabnr == tabpagenr() ? "%#LCARSBlueEnd#\ue0b4%#LCARSBlue#" : "%#LCARSYellowEnd#\ue0b4%#LCARSYellow#")
+
 		let s .= "%#LCARSText#"
 		let s .= " "
+		
 
 	endfor
 
 	" after the last tab fill with TabLineFill and reset tab page nr
-	let s .= '%#LCARSOrange#%T'
+	let s .= '%#LCARSText#%T'
 	let s .= '%='
 
+	"let s .= "%#LCARSOrangeEnd#\ue0b6"
+	"let s .= "%#LCARSOrange# "
 	if tabpagenr('$') > 1
+		"let s .= "%#LCARSText# "
+		let s .= '%#LCARSRed#%999X CLOSE '
 		let s .= "%#LCARSText# "
-		let s .= '%#LCARSBlue#%999X X '
+		let s .= "%#LCARSRed# "
+		let s .= "%#LCARSRedEnd#\ue0b4"
 	endif
 
-	let s .= "%#LCARSText# "
-	let s .= "%#LCARSOrange# "
-	let s .= "%#LCARSOrangeEnd#\ue0b4"
 	
 	return s
 
