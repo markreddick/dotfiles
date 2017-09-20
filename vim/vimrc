@@ -6,7 +6,7 @@ set t_Co=256
 
 "customize the 'mer-easy-custom' colorscheme
 source ~/.vim/mer-easy-custom-overrides.vim
-call MERCustomOverride('lcars')
+call MERCustomOverride('blue')
 "let g:merBackgroundColor = 4
 
 "colorscheme jellybeans 
