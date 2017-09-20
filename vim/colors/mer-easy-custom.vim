@@ -50,30 +50,6 @@ call s:X('merMatchColor', '', '', 'reverse')
 call s:X('merRulerColor', '', 233)
 call s:X('merErrorColor', 118)
 
-" Amber 
-let s:bg_color = 16
-call s:X('merBaseColor', 208, s:bg_color)
-call s:X('merCommentColor', 202)
-call s:X('merKeywordColor', 214)
-call s:X('merInvisiblesColor', 235)
-call s:X('merHighlightColor1', 226)
-call s:X('merHighlightColor2', 184)
-call s:X('merMatchColor', '', '', 'reverse')
-call s:X('merRulerColor', '', 233)
-call s:X('merErrorColor', 196)
-
-" LCARS  
-let s:bg_color = 16
-call s:X('merBaseColor', 7, s:bg_color)
-call s:X('merCommentColor', 8)
-call s:X('merKeywordColor', 3)
-call s:X('merInvisiblesColor', 236)
-call s:X('merHighlightColor1', 2)
-call s:X('merHighlightColor2', 6)
-call s:X('merMatchColor', '', '', 'reverse')
-call s:X('merRulerColor', '', 236)
-call s:X('merErrorColor', 9)
-
 "call s:X('Normal', 40, s:bg_color)
 "call s:X('SpecialKey', 22) "spaces/tabs
 
@@ -281,18 +257,18 @@ hi! link phpRepeat Operator
 "let g:merInactiveBG=237
 
 " LCARS
-let g:merSection1FG=16
-let g:merSection1BG=63
-let g:merSection2FG=16
-let g:merSection2BG=99
-let g:merMainFG=16
-let g:merMainBG=208
-let g:merVisualFG=255
-let g:merVisualBG=202
-let g:merInsertFG=254
-let g:merInsertBG=28
-let g:merInactiveFG=249
-let g:merInactiveBG=237
+"let g:merSection1FG=16
+"let g:merSection1BG=63
+"let g:merSection2FG=16
+"let g:merSection2BG=99
+"let g:merMainFG=16
+"let g:merMainBG=208
+"let g:merVisualFG=255
+"let g:merVisualBG=202
+"let g:merInsertFG=254
+"let g:merInsertBG=28
+"let g:merInactiveFG=249
+"let g:merInactiveBG=237
 
 " amber
 "let g:merSection1FG=16
