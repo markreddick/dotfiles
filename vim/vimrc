@@ -178,6 +178,7 @@ nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 "nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>t :EasyTreeHere<CR>
 nmap <leader>hl :call <SID>SynStack()<CR>
+nnoremap <F4> :UndotreeToggle<CR>
 noremap <F5> :mks! ~/.vim/session/session_1<CR>
 noremap <F6> :mks! ~/.vim/session/session_2<CR>
 noremap <F7> :mks! ~/.vim/session/session_3<CR>
