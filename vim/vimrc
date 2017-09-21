@@ -126,6 +126,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" histwin config
+hi! link UBKey Comment
+hi! link UBActive String
+
 " automatically open quickfix window after :make, :grep, etc
 augroup autoquickfix
   autocmd!
@@ -176,13 +180,15 @@ nnoremap <leader>e :e **/*
 nnoremap <leader>s :sp **/*
 nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 "nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>t :EasyTreeHere<CR>
+"nnoremap <leader>t :EasyTreeHere<CR>
 nmap <leader>hl :call <SID>SynStack()<CR>
-nnoremap <F4> :UndotreeToggle<CR>
-noremap <F5> :mks! ~/.vim/session/session_1<CR>
-noremap <F6> :mks! ~/.vim/session/session_2<CR>
-noremap <F7> :mks! ~/.vim/session/session_3<CR>
-noremap <F8> :mks! ~/.vim/session/session_4<CR>
+nnoremap <F4> :Histwin<CR>
+"nnoremap <F3> :GundoToggle<CR>
+"nnoremap <F4> :UndotreeToggle<CR>
+noremap <leader><F9> :mks! ~/.vim/session/session_1<CR>
+noremap <leader><F10> :mks! ~/.vim/session/session_2<CR>
+noremap <leader><F11> :mks! ~/.vim/session/session_3<CR>
+noremap <leader><F12> :mks! ~/.vim/session/session_4<CR>
 noremap <F9> :source ~/.vim/session/session_1<CR>
 noremap <F10> :source ~/.vim/session/session_2<CR>
 noremap <F11> :source ~/.vim/session/session_3<CR>
