@@ -125,6 +125,7 @@ call s:X('TabLineSel', 255, 242, 'underline')
 call s:X('StatusLine', 250, 19)
 call s:X('StatusLineNC', 247, 232)
 call s:X('VertSplit', 244)
+hi! link VertSplit merInvisiblesColor
 
 " cursor 
 call s:X('Cursor', g:merBackgroundColor, 21)

@@ -41,7 +41,7 @@ set ruler													" show cursor position in status bar
 set number													" show line numbers on left
 set nofoldenable											" don't allow code folding
 set scrolloff=3												" scroll the window so we can always see x lines around the cursor
-set fillchars=vert:\ 
+set fillchars=vert:│
 "set fillchars=vert:│
 "set cursorline												" highlight the current line // NOTE: THIS SEEMS TO GREATLY SLOW DOWN SCROLLING IF ENABLED
 "set nowrap													" don't wrap lines
@@ -91,28 +91,25 @@ let php_htmlInStrings = 1									" highlight HTML in strings
 
 let g:airline_powerline_fonts = 1
 
-" unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-"let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-"let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-"let g:airline_symbols.branch = '⎇'
-"let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-"let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
-"let g:airline_left_sep = ''
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-"let g:airline_symbols.branch = ''
-"let g:airline_symbols.readonly = ''
-"let g:airline_symbols.linenr = ''
+" special "airline" symbols + LCARS
+" vcs branch              u+e0a0
+" line ending             u+e0a1
+" read only               u+e0a2
+" ?? (CN)                 u+e0a3
+" left separator          U+e0b0
+" left alt separator      U+e0b1
+" right separator         U+e0b2
+" right alt separator     u+e0b3
+" LCARS left line end     u+e0b4
+" LCARS right line end    u+e0b6
+" misc                    u+e0b8
+" misc                    u+e0b9
+" misc                    u+e0ba
+" misc                    u+e0bb
+" misc                    u+e0bc
+" misc                    u+e0bd
+" misc                    u+e0be
+" misc                    u+e0bf
 
 function! GitBranchWithSymbol()
   if exists('*gitbranch#name')
@@ -192,10 +189,7 @@ noremap <F12> :source ~/.vim/session/session_4<CR>
 nnoremap <TAB> <C-W>w
 nnoremap <s-TAB> <C-W>W
 
-"source ~/.vim/mer-lines.vim
+source ~/.vim/mer-lines.vim
 "let g:LCARS256 = 1
-source ~/.vim/lcars-lines.vim
+"source ~/.vim/lcars-lines.vim
 
-"customize the 'mer-easy-custom' colorscheme
-"source ~/.vim/mer-easy-custom-overrides.vim
-"call MERCustomOverride('blue')
