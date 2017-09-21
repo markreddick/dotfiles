@@ -108,8 +108,8 @@ call s:X('FoldColumn', 27, 238, 'standout')
 hi! link SignColumn Normal
 
 " diff
-hi! link diffRemoved Constant
-hi! link diffAdded String
+hi! link diffRemoved merErrorColor
+hi! link diffAdded merHighlightColor1
 
 " VimDiff
 call s:X('DiffAdd', 0, 18)
