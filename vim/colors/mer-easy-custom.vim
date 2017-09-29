@@ -75,7 +75,7 @@ hi! link SpecialKey merInvisiblesColor
 hi! link NONE Normal
 
 hi! link Directory Normal
-hi! link LineNr meInvisiblesColor 
+hi! link LineNr merCommentColor 
 hi! link CursorLineNr Normal
 hi! link MoreMsg Normal
 hi! link Question Normal
