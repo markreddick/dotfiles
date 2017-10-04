@@ -137,7 +137,7 @@ call s:X('CursorColumn', '', 243)
 hi! link ColorColumn merRulerColor
 
 " parens
-call s:X('MatchParen', '', '', 'reverse')
+call s:X('MatchParen', g:merHighlightColor1, g:merBackgroundColor, 'reverse')
 
 " conceal
 call s:X('Conceal', 251, 240)

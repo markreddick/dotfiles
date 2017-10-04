@@ -6,7 +6,7 @@ set t_Co=256
 
 "customize the 'mer-easy-custom' colorscheme
 source ~/.vim/mer-easy-custom-overrides.vim
-call MERCustomOverride('blue')
+call MERCustomOverride('lcars')
 "let g:merBackgroundColor = 4
 
 "colorscheme jellybeans 
@@ -89,6 +89,11 @@ let g:netrw_winsize = 25									" set netrw width to 25% of page
 let php_sql_query = 1										" highlight SQL syntax in strings
 let php_htmlInStrings = 1									" highlight HTML in strings
 
+" CtrlP options
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }	" use ctrlp-py-matcher plugin for file matching
+let g:ctrlp_custom_ignore = 'undo\'
 let g:airline_powerline_fonts = 1
 
 " special "airline" symbols + LCARS
