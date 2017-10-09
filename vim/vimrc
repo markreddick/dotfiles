@@ -3,31 +3,18 @@ syntax on
 " enable 256 color
 set t_Co=256
 
+colorscheme jellybeans
 
-"customize the 'mer-easy-custom' colorscheme
-source ~/.vim/mer-easy-custom-overrides.vim
-call MERCustomOverride('lcars')
-"let g:merBackgroundColor = 4
-
-"colorscheme jellybeans 
-"colorscheme solarized
-"colorscheme wombat256mod
-"colorscheme mer-blue-bg
-"colorscheme mer-blue
-colorscheme mer-easy-custom
-"colorscheme mer-minimal
-" turn off colors on cursor line - if we have line heighlighted in any way, it
-" turns special keys (tabs mainly) the "normal" color
-"hi CursorLine ctermfg=NONE ctermbg=NONE cterm=NONE
+" set a few highlight colors that I always want no matter which
+" colorscheme is set
 " set color of non text chars (eol, extends and precedes)
-"hi NonText ctermfg=235 ctermbg=NONE cterm=NONE
-" set color of special keys (nbsp, tab and trail)
-"hi SpecialKey ctermfg=235 ctermbg=NONE cterm=NONE
-" set colored columns (to indicate desired line length) to dark gray
-"hi colorcolumn ctermfg=NONE ctermbg=235 cterm=NONE
-set colorcolumn=80,120
-"let &colorcolumn="80,".join(range(120,999),",")
-"let &colorcolumn="80,".join(range(120,999),",")
+hi NonText ctermfg=235 ctermbg=NONE cterm=NONE
+" " set color of special keys (nbsp, tab and trail)
+hi SpecialKey ctermfg=235 ctermbg=NONE cterm=NONE
+" " set colored columns (to indicate desired line length) to dark gray
+hi colorcolumn ctermfg=NONE ctermbg=235 cterm=NONE
+
+set colorcolumn=80,120										" add colored line at specifed columns
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8	" saving and encoding
 set nobackup nowritebackup noswapfile autoread				" no backup or swap
 set hlsearch incsearch ignorecase smartcase					" search
@@ -42,18 +29,12 @@ set number													" show line numbers on left
 set nofoldenable											" don't allow code folding
 set scrolloff=3												" scroll the window so we can always see x lines around the cursor
 set fillchars=vert:│
-"set fillchars=vert:│
 "set cursorline												" highlight the current line // NOTE: THIS SEEMS TO GREATLY SLOW DOWN SCROLLING IF ENABLED
 "set nowrap													" don't wrap lines
 set wrap													" wrap lines
 set textwidth=0 wrapmargin=0								" turn off physical line wrapping (ie: automatic insertion of newlines)
 set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab		" 4 space tabstops
-"set listchars=space:.,nbsp:_,tab:>—,eol:$,trail:-			" show tabstops visually
-"set listchars=nbsp:·,tab:>—,trail:·							" show tabstops visually
-"set listchars=nbsp:·,tab:▶▹,trail:·
-"set listchars=nbsp:·,tab:▶-,trail:·
 set listchars=nbsp:·,tab:│·,trail:·
-"set listchars=nbsp:·,tab:▒░,trail:·
 set list													" turns on showing chars described in listchars
 set showmatch												" highlights matching parens/brackets
 set laststatus=2											" always enbale status line
@@ -96,35 +77,6 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }	" use ctrlp-py-matcher
 let g:ctrlp_custom_ignore = 'undo\'
 let g:airline_powerline_fonts = 1
 
-" special "airline" symbols + LCARS
-" vcs branch              u+e0a0
-" line ending             u+e0a1
-" read only               u+e0a2
-" ?? (CN)                 u+e0a3
-" left separator          U+e0b0
-" left alt separator      U+e0b1
-" right separator         U+e0b2
-" right alt separator     u+e0b3
-" LCARS left line end     u+e0b4
-" LCARS right line end    u+e0b6
-" misc                    u+e0b8
-" misc                    u+e0b9
-" misc                    u+e0ba
-" misc                    u+e0bb
-" misc                    u+e0bc
-" misc                    u+e0bd
-" misc                    u+e0be
-" misc                    u+e0bf
-
-function! GitBranchWithSymbol()
-  if exists('*gitbranch#name')
-    let branch_name = gitbranch#name()
-	return strlen(branch_name) > 0 ? '  ' . branch_name . ' ' : ''
-  else
-    return ''
-  endif
-endfunction
-
 "syntastic config
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -142,7 +94,7 @@ augroup autoquickfix
   autocmd QuickFixCmdPost 1* lwindow
 augroup END
 
-
+" automatically toggle relative line numbers depending on if window has focus
 augroup relativenumbertoggle
   autocmd!
   autocmd WinEnter,FocusGained,InsertLeave * set relativenumber
@@ -164,32 +116,20 @@ function! NumberToggle()
   endif
 endfunc
 
-" show highlight groups
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
 set timeout timeoutlen=3000 ttimeoutlen=10	" time out on mapping after 3 seconds, on key codes after 1/100th sec
 
 " key mappings
 inoremap <c-F> <C-x><C-o>
 inoremap <leader>p <ESC>:r ~/templates/phpdoc.php<CR>jA
 inoremap <leader>d <ESC>:r ~/templates/phperron.php<CR>i
+inoremap <leader>l <ESC>:r ~/templates/phpdebuglog.php<CR>i
 nnoremap <leader>d :bp\|bd #<CR>
 nnoremap <leader>n :call NumberToggle()<CR>
 nnoremap <leader>b :ls<CR>:b
 nnoremap <leader>e :e **/*
 nnoremap <leader>s :sp **/*
 nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
-"nnoremap <leader>t :NERDTreeToggle<CR>
-"nnoremap <leader>t :EasyTreeHere<CR>
-nmap <leader>hl :call <SID>SynStack()<CR>
 nnoremap <F4> :Histwin<CR>
-"nnoremap <F3> :GundoToggle<CR>
-"nnoremap <F4> :UndotreeToggle<CR>
 noremap <leader><F9> :mks! ~/.vim/session/session_1<CR>
 noremap <leader><F10> :mks! ~/.vim/session/session_2<CR>
 noremap <leader><F11> :mks! ~/.vim/session/session_3<CR>
@@ -201,7 +141,6 @@ noremap <F12> :source ~/.vim/session/session_4<CR>
 nnoremap <TAB> <C-W>w
 nnoremap <s-TAB> <C-W>W
 
+" load my custom statusline and tabline
 source ~/.vim/mer-lines.vim
-"let g:LCARS256 = 1
-"source ~/.vim/lcars-lines.vim
 

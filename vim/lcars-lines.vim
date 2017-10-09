@@ -1,3 +1,22 @@
+" special "airline" symbols + LCARS
+" vcs branch              u+e0a0
+" line ending             u+e0a1
+" read only               u+e0a2
+" ?? (CN)                 u+e0a3
+" left separator          U+e0b0
+" left alt separator      U+e0b1
+" right separator         U+e0b2
+" right alt separator     u+e0b3
+" LCARS left line end     u+e0b4
+" LCARS right line end    u+e0b6
+" misc                    u+e0b8
+" misc                    u+e0b9
+" misc                    u+e0ba
+" misc                    u+e0bb
+" misc                    u+e0bc
+" misc                    u+e0bd
+" misc                    u+e0be
+" misc                    u+e0bf
 
 function! GitBranchWithSymbol()
   if exists('*gitbranch#name')
