@@ -2,7 +2,7 @@
 "
 " Note: cterm can be 'bold', 'underline', 'reverse', 'italic' or 'none'
 
-set background=dark
+"set background=dark
 
 hi clear
 

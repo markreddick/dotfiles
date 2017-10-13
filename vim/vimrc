@@ -2,8 +2,12 @@ scriptencoding utf-8
 syntax on
 " enable 256 color
 set t_Co=256
+set background=dark
 
-colorscheme jellybeans
+"colorscheme jellybeans
+source ~/.vim/mer-easy-custom-overrides.vim
+call MERCustomOverride('lcars')
+colorscheme mer-easy-custom
 
 " set a few highlight colors that I always want no matter which
 " colorscheme is set
