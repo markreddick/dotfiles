@@ -1,3 +1,6 @@
 [submodule "vim/pack/mer-plugins/start/vim-dirvish"]
 	path = vim/pack/mer-plugins/start/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish.git
+[submodule "vim/pack/mer-plugins/start/ctrlp.vim"]
+	path = vim/pack/mer-plugins/start/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
