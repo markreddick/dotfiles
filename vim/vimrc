@@ -4,7 +4,7 @@ syntax on
 set t_Co=256
 set background=dark
 
-"colorscheme jellybeans
+" customize the mer-easy-custom colorscheme
 source ~/.vim/mer-easy-custom-overrides.vim
 call MERCustomOverride('lcars')
 colorscheme mer-easy-custom
@@ -105,8 +105,6 @@ augroup relativenumbertoggle
   autocmd WinLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
 
-execute pathogen#infect()
-
 " enable PHP autocomplete for all PHP files
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
@@ -146,5 +144,7 @@ nnoremap <TAB> <C-W>w
 nnoremap <s-TAB> <C-W>W
 
 " load my custom statusline and tabline
-source ~/.vim/mer-lines.vim
+"source ~/.vim/mer-lines.vim
+let g:LCARS256 = 1
+source ~/.vim/lcars-lines.vim
 
