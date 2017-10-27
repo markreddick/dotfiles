@@ -1,0 +1,3 @@
+[submodule "vim/pack/mer-plugins/start/vim-dirvish"]
+	path = vim/pack/mer-plugins/start/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
