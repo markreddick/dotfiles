@@ -1,5 +1,9 @@
 scriptencoding utf-8
 syntax on
+
+" enable file type detection - required for Dirvish to work
+filetype plugin indent on
+
 " enable 256 color
 set t_Co=256
 set background=dark
