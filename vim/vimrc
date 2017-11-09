@@ -123,10 +123,13 @@ endfunc
 set timeout timeoutlen=3000 ttimeoutlen=10	" time out on mapping after 3 seconds, on key codes after 1/100th sec
 
 " key mappings
+let s:debug_path = fnamemodify('~/.vim/templates/phpdebuglog.php', ':p')
+execute "inoremap <leader>l include_once('" . s:debug_path . "');"
 inoremap <c-F> <C-x><C-o>
-inoremap <leader>p <ESC>:r ~/templates/phpdoc.php<CR>jA
-inoremap <leader>d <ESC>:r ~/templates/phperron.php<CR>i
-inoremap <leader>l <ESC>:r ~/templates/phpdebuglog.php<CR>i
+inoremap <leader>p <ESC>:r ~/.vim/templates/phpdoc.php<CR>jA
+inoremap <leader>d <ESC>:r ~/.vim/templates/phperron.php<CR>i
+"inoremap <leader>l <ESC>:r ~/templates/phpdebuglog.php<CR>i
+"inoremap <leader>l include_once('/home/mreddick/.vim/templates/phpdebuglog.php');
 nnoremap <leader>d :bp\|bd #<CR>
 nnoremap <leader>n :call NumberToggle()<CR>
 nnoremap <leader>b :ls<CR>:b
