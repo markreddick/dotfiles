@@ -38,7 +38,8 @@ set fillchars=vert:│
 set wrap													" wrap lines
 set textwidth=0 wrapmargin=0								" turn off physical line wrapping (ie: automatic insertion of newlines)
 set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab		" 4 space tabstops
-set listchars=nbsp:·,tab:│·,trail:·
+"set listchars=nbsp:·,tab:│·,trail:·
+set listchars=nbsp:·,tab:│·,trail:▲
 set list													" turns on showing chars described in listchars
 set showmatch												" highlights matching parens/brackets
 set laststatus=2											" always enbale status line

@@ -1,6 +1,6 @@
 <?php
 
-function dlog($msg, $data = null)
+function dlog($msg, $data = '')
 {
 	$file = '/home/mreddick/mer_php.log';
 	
@@ -12,12 +12,16 @@ function dlog($msg, $data = null)
 		}
 	}
 
-	if (empty($data)) {
+	if ($data == '') {
 		$data = $msg;
 		$msg = null;
 	}
 
-	if (is_array($data)) {
+	if (empty($data)) {
+		$data = '[null]';
+	}
+
+	if (is_array($data) || is_object($data)) {
 		$data = print_r($data, true);
 	}
 
