@@ -36,6 +36,19 @@ function MERCustomOverride(overrideName)
     let g:merHighlightColor2 = 6
     let g:merRulerColor = 236
     let g:merErrorColor = 9
+  
+  elseif a:overrideName == 'ansi16'
+
+    let g:merBackgroundColor = 6
+    let g:merNormalColor = 7
+    let g:merCommentColor = 11
+    let g:merKeywordColor = 10
+    let g:merInvisiblesColor = 12
+    let g:merHighlightColor1 = 8
+    let g:merHighlightColor2 = 9
+    let g:merRulerColor = 13
+    let g:merErrorColor = 14
+	let g:merErrorBackgroundColor = 15
 
   elseif a:overrideName == 'blue'
 

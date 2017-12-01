@@ -6,17 +6,18 @@ set background=dark
 
 "colorscheme jellybeans
 source ~/.vim/mer-easy-custom-overrides.vim
-call MERCustomOverride('lcars')
+call MERCustomOverride('ansi16')
+"call MERCustomOverride('lcars')
 colorscheme mer-easy-custom
 
 " set a few highlight colors that I always want no matter which
 " colorscheme is set
 " set color of non text chars (eol, extends and precedes)
-hi NonText ctermfg=235 ctermbg=NONE cterm=NONE
+"hi NonText ctermfg=235 ctermbg=NONE cterm=NONE
 " " set color of special keys (nbsp, tab and trail)
-hi SpecialKey ctermfg=235 ctermbg=NONE cterm=NONE
+"hi SpecialKey ctermfg=235 ctermbg=NONE cterm=NONE
 " " set colored columns (to indicate desired line length) to dark gray
-hi colorcolumn ctermfg=NONE ctermbg=235 cterm=NONE
+"hi colorcolumn ctermfg=NONE ctermbg=235 cterm=NONE
 
 set colorcolumn=80,120										" add colored line at specifed columns
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8	" saving and encoding
@@ -111,6 +112,9 @@ execute pathogen#infect()
 " enable PHP autocomplete for all PHP files
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
+" trim whitespaces at end of line whenver saving a PHP file
+"autocmd FileType php autocmd BufWritePre <buffer> %s/\s\+$//e
+
 function! NumberToggle()
   if(&relativenumber == 1)
     set norelativenumber
@@ -150,5 +154,18 @@ nnoremap <TAB> <C-W>w
 nnoremap <s-TAB> <C-W>W
 
 " load my custom statusline and tabline
+let g:merSection1FG=6
+let g:merSection1BG=7
+let g:merSection2FG=7
+let g:merSection2BG=13
+let g:merMainFG=7
+let g:merMainBG=12
+let g:merVisualFG=6
+let g:merVisualBG=9
+let g:merInsertFG=6
+let g:merInsertBG=8
+let g:merInactiveFG=6
+let g:merInactiveBG=11
+
 source ~/.vim/mer-lines.vim
 
