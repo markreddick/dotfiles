@@ -10,6 +10,7 @@ set background=dark
 
 " customize the mer-easy-custom colorscheme
 source ~/.vim/mer-easy-custom-overrides.vim
+"call MERCustomOverride('ansi16')
 call MERCustomOverride('blue')
 colorscheme mer-easy-custom
 
@@ -42,7 +43,7 @@ set fillchars=vert:│
 set wrap													" wrap lines
 set textwidth=0 wrapmargin=0								" turn off physical line wrapping (ie: automatic insertion of newlines)
 set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab		" 4 space tabstops
-set listchars=nbsp:·,tab:│·,trail:·
+set listchars=nbsp:·,tab:│·,trail:▲
 set list													" turns on showing chars described in listchars
 set showmatch												" highlights matching parens/brackets
 set laststatus=2											" always enbale status line
@@ -113,7 +114,7 @@ augroup END
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " trim whitespace from end of lines whenever saving PHP file
-autocmd FileType php autocmd BufWritePre <buffer> %s/\s\+$//e
+"autocmd FileType php autocmd BufWritePre <buffer> %s/\s\+$//e
 
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -152,7 +153,21 @@ nnoremap <TAB> <C-W>w
 nnoremap <s-TAB> <C-W>W
 
 " load my custom statusline and tabline
-source ~/.vim/mer-lines.vim
 "let g:LCARS256 = 1
 "source ~/.vim/lcars-lines.vim
 
+" load my custom statusline and tabline
+"let g:merSection1FG=6
+"let g:merSection1BG=7
+"let g:merSection2FG=7
+"let g:merSection2BG=13
+"let g:merMainFG=7
+"let g:merMainBG=12
+"let g:merVisualFG=6
+"let g:merVisualBG=9
+"let g:merInsertFG=6
+"let g:merInsertBG=8
+"let g:merInactiveFG=6
+"let g:merInactiveBG=11
+
+source ~/.vim/mer-lines.vim
