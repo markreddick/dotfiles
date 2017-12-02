@@ -170,4 +170,6 @@ nnoremap <s-TAB> <C-W>W
 "let g:merInactiveFG=6
 "let g:merInactiveBG=11
 
+source ~/.vim/mer-lines-overrides.vim
+call MERLinesOverride('matrix')
 source ~/.vim/mer-lines.vim

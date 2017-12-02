@@ -22,6 +22,7 @@ if !exists("g:merSection1FG")
   let g:merInsertBG=28
   let g:merInactiveFG=249
   let g:merInactiveBG=237
+
 endif
 
 exec 'hi MERNormalSection ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
@@ -31,7 +32,7 @@ exec 'hi MERVisualSectionSep ctermfg=' . g:merVisualBG . ' ctermbg=' . g:merSect
 exec 'hi MERInsertSection ctermfg=' . g:merInsertFG . ' ctermbg=' . g:merInsertBG . ' cterm=NONE'
 exec 'hi MERInsertSectionSep ctermfg=' . g:merInsertBG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
  
-exec 'hi MERMain ctermfg=' . g:merMainFG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
+exec 'hi MERMain guibg=#ff0000 ctermfg=' . g:merMainFG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
 exec 'hi MERInactive ctermfg=' . g:merInactiveFG . ' ctermbg=' . g:merInactiveBG . ' cterm=NONE'
 exec 'hi MERSection1 ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
 exec 'hi MERSection1Sep ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
