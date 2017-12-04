@@ -8,20 +8,22 @@ filetype plugin indent on
 set t_Co=256
 set background=dark
 
+set termguicolors
+
 " customize the mer-easy-custom colorscheme
 source ~/.vim/mer-easy-custom-overrides.vim
 "call MERCustomOverride('ansi16')
-call MERCustomOverride('blue')
+call MERCustomOverride('hacker')
 colorscheme mer-easy-custom
 
 " set a few highlight colors that I always want no matter which
 " colorscheme is set
 " set color of non text chars (eol, extends and precedes)
-hi NonText ctermfg=235 ctermbg=NONE cterm=NONE
+"hi NonText ctermfg=235 ctermbg=NONE cterm=NONE
 " " set color of special keys (nbsp, tab and trail)
-hi SpecialKey ctermfg=235 ctermbg=NONE cterm=NONE
+"hi SpecialKey ctermfg=235 ctermbg=NONE cterm=NONE
 " " set colored columns (to indicate desired line length) to dark gray
-hi colorcolumn ctermfg=NONE ctermbg=235 cterm=NONE
+"hi colorcolumn ctermfg=NONE ctermbg=235 cterm=NONE
 
 set colorcolumn=80,120										" add colored line at specifed columns
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8	" saving and encoding
@@ -126,6 +128,11 @@ function! NumberToggle()
   endif
 endfunc
 
+function! GetColorSchemeGroup()
+  let s = synID(line('.'), col('.'), 1)
+  echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
+endfunc
+
 set timeout timeoutlen=3000 ttimeoutlen=10	" time out on mapping after 3 seconds, on key codes after 1/100th sec
 
 " key mappings
@@ -151,6 +158,7 @@ noremap <F11> :source ~/.vim/session/session_3<CR>
 noremap <F12> :source ~/.vim/session/session_4<CR>
 nnoremap <TAB> <C-W>w
 nnoremap <s-TAB> <C-W>W
+nnoremap <leader>l :call GetColorSchemeGroup()<CR>
 
 " load my custom statusline and tabline
 "let g:LCARS256 = 1
@@ -171,5 +179,5 @@ nnoremap <s-TAB> <C-W>W
 "let g:merInactiveBG=11
 
 source ~/.vim/mer-lines-overrides.vim
-call MERLinesOverride('matrix')
+call MERLinesOverride('hacker')
 source ~/.vim/mer-lines.vim

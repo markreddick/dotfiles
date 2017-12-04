@@ -23,29 +23,42 @@ if !exists("g:merSection1FG")
   let g:merInactiveFG=249
   let g:merInactiveBG=237
 
+  let g:merGUISection1FG='#000000'
+  let g:merGUISection1BG='#25d70f'
+  let g:merGUISection2FG='#000000'
+  let g:merGUISection2BG='#94fb8b'
+  let g:merGUIMainFG='#000000'
+  let g:merGUIMainBG='#0f9e08'
+  let g:merGUIVisualFG='#000000'
+  let g:merGUIVisualBG='#41f68b'
+  let g:merGUIInsertFG='#000000'
+  let g:merGUIInsertBG='#94fb8b'
+  let g:merGUIInactiveFG='#25d70f'
+  let g:merGUIInactiveBG='#0f9e08'
+
 endif
 
-exec 'hi MERNormalSection ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
-exec 'hi MERNormalSectionSep ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERVisualSection ctermfg=' . g:merVisualFG . ' ctermbg=' . g:merVisualBG . ' cterm=NONE'
-exec 'hi MERVisualSectionSep ctermfg=' . g:merVisualBG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERInsertSection ctermfg=' . g:merInsertFG . ' ctermbg=' . g:merInsertBG . ' cterm=NONE'
-exec 'hi MERInsertSectionSep ctermfg=' . g:merInsertBG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERNormalSection     guifg=' . g:merGUISection1FG . ' guibg=' . g:merGUISection1BG . ' ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
+exec 'hi MERNormalSectionSep  guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERVisualSection     guifg=' . g:merGUIVisualFG   . ' guibg=' . g:merGUIVisualBG   . ' ctermfg=' . g:merVisualFG   . ' ctermbg=' . g:merVisualBG   . ' cterm=NONE'
+exec 'hi MERVisualSectionSep  guifg=' . g:merGUIVisualBG   . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merVisualBG   . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERInsertSection     guifg=' . g:merGUIInsertFG   . ' guibg=' . g:merGUIInsertBG   . ' ctermfg=' . g:merInsertFG   . ' ctermbg=' . g:merInsertBG   . ' cterm=NONE'
+exec 'hi MERInsertSectionSep  guifg=' . g:merGUIInsertBG   . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merInsertBG   . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
  
-exec 'hi MERMain guibg=#ff0000 ctermfg=' . g:merMainFG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
-exec 'hi MERInactive ctermfg=' . g:merInactiveFG . ' ctermbg=' . g:merInactiveBG . ' cterm=NONE'
-exec 'hi MERSection1 ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
-exec 'hi MERSection1Sep ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERSection2 ctermfg=' . g:merSection2FG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERSection2Sep ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
+exec 'hi MERMain              guifg=' . g:merGUIMainFG     . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merMainFG     . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
+exec 'hi MERInactive          guifg=' . g:merGUIInactiveFG . ' guibg=' . g:merGUIInactiveBG . ' ctermfg=' . g:merInactiveFG . ' ctermbg=' . g:merInactiveBG . ' cterm=NONE'
+exec 'hi MERSection1          guifg=' . g:merGUISection1FG . ' guibg=' . g:merGUISection1BG . ' ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
+exec 'hi MERSection1Sep       guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERSection2          guifg=' . g:merGUISection2FG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection2FG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERSection2Sep       guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
 
-exec 'hi MERTabMain ctermfg=' . g:merMainFG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
-exec 'hi MERTab ctermfg=' . g:merSection2FG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERTabSep ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
-exec 'hi MERLastTabSep ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
-exec 'hi MERCurrentTab ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
-exec 'hi MERCurrentTabSep ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERCurrentLastTabSep ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
+exec 'hi MERTabMain           guifg=' . g:merGUIMainFG     . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merMainFG     . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
+exec 'hi MERTab               guifg=' . g:merGUISection2FG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection2FG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERTabSep            guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUISection1BG . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
+exec 'hi MERLastTabSep        guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
+exec 'hi MERCurrentTab        guifg=' . g:merGUISection1FG . ' guibg=' . g:merGUISection1BG . ' ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
+exec 'hi MERCurrentTabSep     guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERCurrentLastTabSep guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
 
 function! ActiveStatus()
 

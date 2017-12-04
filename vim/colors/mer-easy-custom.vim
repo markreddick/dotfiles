@@ -18,6 +18,9 @@ fun! s:X(...)
   let fg = a:0 >= 2 ? a:2 : ''
   let bg = a:0 >= 3 ? a:3 : ''
   let attr = a:0 >= 4 ? a:4 : 'NONE'
+  let gfg = a:0 >= 5 ? a:5 : ''
+  let gbg = a:0 >= 6 ? a:6 : ''
+  let gattr = a:0 >= 7 ? a:7 :attr
 
   let cmd = 'hi '.group
   if (fg != '')
@@ -29,6 +32,15 @@ fun! s:X(...)
   if (attr != '')
     let cmd .= ' cterm='.attr
   endif
+  if (gfg != '')
+    let cmd .= ' guifg=' . gfg
+  endif
+  if (gbg != '')
+    let cmd .= ' guibg=' . gbg
+  endif
+"  if (gattr != '')
+"    let cmd = ' gui=' . gattr
+"  endif
 
   exec cmd
 
@@ -53,19 +65,20 @@ call s:SetVar('g:merHighlightColor1', 82)
 call s:SetVar('g:merHighlightColor2', 42)
 call s:SetVar('g:merRulerColor', 233)
 call s:SetVar('g:merErrorColor', 118)
+call s:SetVar('g:merErrorBackgroundColor', 16)
 
 " Matrix - Green
 "let s:bg_color = 16
-call s:X('Normal', g:merNormalColor, g:merBackgroundColor)
-call s:X('merBaseColor', g:merNormalColor, g:merBackgroundColor)
-call s:X('merCommentColor', g:merCommentColor)
-call s:X('merKeywordColor', g:merKeywordColor)
-call s:X('merInvisiblesColor', g:merInvisiblesColor)
-call s:X('merHighlightColor1', g:merHighlightColor1)
-call s:X('merHighlightColor2', g:merHighlightColor2)
+call s:X('Normal', g:merNormalColor, g:merBackgroundColor, '', g:merGUINormalColor, g:merGUIBackgroundColor)
+call s:X('merBaseColor', g:merNormalColor, g:merBackgroundColor, '', g:merGUINormalColor, g:merGUIBackgroundColor)
+call s:X('merCommentColor', g:merCommentColor, '', '', g:merGUICommentColor)
+call s:X('merKeywordColor', g:merKeywordColor, '', '', g:merGUIKeywordColor)
+call s:X('merInvisiblesColor', g:merInvisiblesColor, '', '', g:merGUIInvisiblesColor)
+call s:X('merHighlightColor1', g:merHighlightColor1, '', '', g:merGUIHighlightColor1)
+call s:X('merHighlightColor2', g:merHighlightColor2, '', '', g:merGUIHighlightColor2)
 call s:X('merMatchColor', '', '', 'reverse')
-call s:X('merRulerColor', '', g:merRulerColor)
-call s:X('merErrorColor', g:merErrorColor)
+call s:X('merRulerColor', '', g:merRulerColor, '', '', g:merGUIRulerColor)
+call s:X('merErrorColor', g:merErrorColor, g:merErrorBackgroundColor, '', g:merGUIErrorColor, g:merGUIErrorBackgroundColor)
 
 "call s:X('Normal', 40, s:bg_color)
 "call s:X('SpecialKey', 22) "spaces/tabs
@@ -148,15 +161,12 @@ call s:X('StatusLineTermNC', 16, 46, 'reverse')
 
 
 " special
-"call s:X('NonText', 202)
 hi! link NonText merInvisiblesColor
-"call s:X('SpecialChar', 202)
-"call s:X('Special', 202)
-"call s:X('Delimiter', 249)
+hi! link SpecialChar merKeywordColor
+hi! link Special merKeywordColor
 hi! link Delimiter Normal
-"call s:X('ErrorMsg', 202,1)
 hi! link ErrorMsg merErrorColor
-"call s:X('Todo', 202)
+hi! link Todo merHighlightColor2
 
 " SQL
 hi! link sqlKeyword String
@@ -190,7 +200,6 @@ hi! link xmlEntityPunct xmlEntity
 hi! link xmlDocTypeDecl PreProc
 hi! link xmlDocTypeKeyword PreProc
 hi! link xmlProcessingDelim xmlAttrib
-
 
 " programming
 hi! link Constant merKeywordColor 
