@@ -21,7 +21,7 @@ function MERCustomOverride(overrideName)
     let g:merGUIInvisiblesColor = '#083107'
     let g:merGUIHighlightColor1 = '#9dfb00'
     let g:merGUIHighlightColor2 = '#94fb8b'
-    let g:merGUIRulerColor = '#093f01'
+    let g:merGUIRulerColor = '#001e00'
     let g:merGUIErrorColor = '#000000'
     let g:merGUIErrorBackgroundColor = '#11a50a'
 

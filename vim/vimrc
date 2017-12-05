@@ -4,6 +4,19 @@ syntax on
 " enable file type detection - required for Dirvish to work
 filetype plugin indent on
 
+" the above call to turn on plugin indenting based on filetype also
+" turns on filetype indenting outside of plugins - so we will now turn
+" off basic filetype indenting as this keeps messing with my code 
+filetype indent off
+
+" not exactly sure what this does, but it works to get the mouse
+" able to move statusbar to adjust window sizes
+if has("mouse_sgr")
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+endif
+
 " enable 256 color
 set t_Co=256
 set background=dark
