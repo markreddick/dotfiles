@@ -73,6 +73,7 @@ set visualbell												" display visual bell instead of beeping
 set ttyfast													" fast terminal connection
 "set autochdir												" automatically charnge current working dir to file of current buffer
 set viminfo='1000,f1,<500,%,n~/.vim/viminfo
+set sessionoptions-=options									" remove 'options' from the data saved when saving sessions - this was causing color schemes to load base theme without taking into account global vars
 
 "turn on the sign column always so it doesn't cause the whole window to move
 "when there are signs or no signs to display
@@ -194,3 +195,4 @@ nnoremap <leader>l :call GetColorSchemeGroup()<CR>
 source ~/.vim/mer-lines-overrides.vim
 call MERLinesOverride('hacker')
 source ~/.vim/mer-lines.vim
+
