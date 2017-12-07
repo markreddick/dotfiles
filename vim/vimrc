@@ -75,6 +75,12 @@ set ttyfast													" fast terminal connection
 set viminfo='1000,f1,<500,%,n~/.vim/viminfo
 set sessionoptions-=options									" remove 'options' from the data saved when saving sessions - this was causing color schemes to load base theme without taking into account global vars
 
+"show block cursor in normal mode and a line cursor in insert mode
+let &t_ti .= "\e[1 q"
+let &t_SI .= "\e[5 q"
+let &t_EI .= "\e[1 q"
+let &t_te .= "\e[0 q"
+
 "turn on the sign column always so it doesn't cause the whole window to move
 "when there are signs or no signs to display
 if exists('&signcolumn')
