@@ -200,5 +200,5 @@ nnoremap <leader>l :call GetColorSchemeGroup()<CR>
 
 source ~/.vim/mer-lines-overrides.vim
 call MERLinesOverride('hacker')
-source ~/.vim/mer-lines-min.vim
+source ~/.vim/mer-lines.vim
 

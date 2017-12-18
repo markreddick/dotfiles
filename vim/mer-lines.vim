@@ -10,87 +10,58 @@ endfunction
 
 "allow overriding colors - if not set, we will set to defaults
 if !exists("g:merSection1FG")
-  let g:merSection1FG=255
-  let g:merSection1BG=33
-  let g:merSection2FG=253
-  let g:merSection2BG=27
+  let g:merSection1FG=253
+  let g:merSection1BG=21
+  let g:merSection2FG=255
+  let g:merSection2BG=33
   let g:merMainFG=253
-  let g:merMainBG=21
-  let g:merVisualFG=255
-  let g:merVisualBG=202
-  let g:merInsertFG=254
-  let g:merInsertBG=28
-  let g:merInactiveFG=249
-  let g:merInactiveBG=237
+  let g:merMainBG=27
+  let g:merInactiveFG=253
+  let g:merInactiveBG=21
 
   let g:merGUISection1FG='#000000'
-  let g:merGUISection1BG='#25d70f'
+  let g:merGUISection1BG='#0f9e08'
   let g:merGUISection2FG='#000000'
-  let g:merGUISection2BG='#94fb8b'
+  let g:merGUISection2BG='#25d70f'
   let g:merGUIMainFG='#000000'
-  let g:merGUIMainBG='#0f9e08'
-  let g:merGUIVisualFG='#000000'
-  let g:merGUIVisualBG='#41f68b'
-  let g:merGUIInsertFG='#000000'
-  let g:merGUIInsertBG='#94fb8b'
-  let g:merGUIInactiveFG='#25d70f'
+  let g:merGUIMainBG='#94fb8b'
+  let g:merGUIInactiveFG='#000000'
   let g:merGUIInactiveBG='#0f9e08'
 
 endif
 
-exec 'hi MERNormalSection     guifg=' . g:merGUISection1FG . ' guibg=' . g:merGUISection1BG . ' ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
-exec 'hi MERNormalSectionSep  guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERVisualSection     guifg=' . g:merGUIVisualFG   . ' guibg=' . g:merGUIVisualBG   . ' ctermfg=' . g:merVisualFG   . ' ctermbg=' . g:merVisualBG   . ' cterm=NONE'
-exec 'hi MERVisualSectionSep  guifg=' . g:merGUIVisualBG   . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merVisualBG   . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERInsertSection     guifg=' . g:merGUIInsertFG   . ' guibg=' . g:merGUIInsertBG   . ' ctermfg=' . g:merInsertFG   . ' ctermbg=' . g:merInsertBG   . ' cterm=NONE'
-exec 'hi MERInsertSectionSep  guifg=' . g:merGUIInsertBG   . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merInsertBG   . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
- 
 exec 'hi MERMain              guifg=' . g:merGUIMainFG     . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merMainFG     . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
 exec 'hi MERInactive          guifg=' . g:merGUIInactiveFG . ' guibg=' . g:merGUIInactiveBG . ' ctermfg=' . g:merInactiveFG . ' ctermbg=' . g:merInactiveBG . ' cterm=NONE'
 exec 'hi MERSection1          guifg=' . g:merGUISection1FG . ' guibg=' . g:merGUISection1BG . ' ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
-exec 'hi MERSection1Sep       guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERSection1Sep       guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUIMainBG . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
 exec 'hi MERSection2          guifg=' . g:merGUISection2FG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection2FG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERSection2Sep       guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
+exec 'hi MERSection2Sep       guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUISection1BG     . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merSection1BG     . ' cterm=NONE'
 
-exec 'hi MERTabMain           guifg=' . g:merGUIMainFG     . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merMainFG     . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
+exec 'hi MERTabMain           guifg=' . g:merGUISection1FG     . ' guibg=' . g:merGUISection1BG     . ' ctermfg=' . g:merSection1FG     . ' ctermbg=' . g:merSection1BG     . ' cterm=NONE'
 exec 'hi MERTab               guifg=' . g:merGUISection2FG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection2FG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERTabSep            guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUISection1BG . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
-exec 'hi MERLastTabSep        guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
-exec 'hi MERCurrentTab        guifg=' . g:merGUISection1FG . ' guibg=' . g:merGUISection1BG . ' ctermfg=' . g:merSection1FG . ' ctermbg=' . g:merSection1BG . ' cterm=NONE'
-exec 'hi MERCurrentTabSep     guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
-exec 'hi MERCurrentLastTabSep guifg=' . g:merGUISection1BG . ' guibg=' . g:merGUIMainBG     . ' ctermfg=' . g:merSection1BG . ' ctermbg=' . g:merMainBG     . ' cterm=NONE'
+exec 'hi MERTabSep            guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUIMainBG . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
+exec 'hi MERLastTabSep        guifg=' . g:merGUISection2BG . ' guibg=' . g:merGUISection1BG     . ' ctermfg=' . g:merSection2BG . ' ctermbg=' . g:merSection1BG     . ' cterm=NONE'
+exec 'hi MERCurrentTab        guifg=' . g:merGUIMainFG . ' guibg=' . g:merGUIMainBG . ' ctermfg=' . g:merMainFG . ' ctermbg=' . g:merMainBG . ' cterm=NONE'
+exec 'hi MERCurrentTabSep     guifg=' . g:merGUIMainBG . ' guibg=' . g:merGUISection2BG . ' ctermfg=' . g:merMainBG . ' ctermbg=' . g:merSection2BG . ' cterm=NONE'
+exec 'hi MERCurrentLastTabSep guifg=' . g:merGUIMainBG . ' guibg=' . g:merGUISection1BG     . ' ctermfg=' . g:merMainBG . ' ctermbg=' . g:merSection1BG     . ' cterm=NONE'
 
 function! ActiveStatus()
 
   let sl=""
 
-  if mode() == 'n'
-    let sl .= "%#MERNormalSection# NORMAL %#MERNormalSectionSep#\ue0b0"
-  elseif mode() == 'v'
-    let sl .= "%#MERVisualSection# VISUAL %#MERVisualSectionSep#\ue0b0"
-  elseif mode() == 'i'
-    let sl .= "%#MERInsertSection# INSERT %#MERInsertSectionSep#\ue0b0"
-  else
-    let sl .= "%#MERNormalSection# " . mode() . " %#MERNormalSectionSep#\ue0b0"
-  endif
-
-  let sl.="%#MERSection2#"
-  let sl.="%{GitBranchWithSymbol()}"
-  let sl.="%#MERSection2Sep#\ue0b0"
   let sl.="%#MERMain#"
   let sl.=" %n:%f %r%m"
   let sl.="%<"
   let sl.="%="
-  let sl.="%{&fileformat}"
+  let sl.=" %{&fileformat}"
   let sl.=" | %{&fileencoding?&fileencoding:&encoding}"
   let sl.=" | %Y "
+  let sl.="%#MERSection1Sep#\ue0b2"
+  let sl.="%#MERSection1#"
+  let sl.=" %{GitBranchWithSymbol()}"
   let sl.="%#MERSection2Sep#\ue0b2"
   let sl.="%#MERSection2#"
   let sl.="%4p%% "
-  let sl.="%#MERSection1Sep#\ue0b2"
-  let sl.="%#MERSection1#"
-  let sl.=" %4l:%-3c "
-"  let sl.=" %4l "
   return sl
 endfunction
 
@@ -100,7 +71,8 @@ function! InactiveStatus()
   let sl.=" %n:%t %r%m"
   let sl.="%<"
   let sl.="%="
-  let sl.=" %4l:%-3c "
+  let sl.=""
+  let sl.="%4p%% "
   return sl
 endfunction
 
@@ -146,7 +118,7 @@ function! MyTabLine()
 	endfor
 
 	" after the last tab fill with TabLineFill and reset tab page nr
-	let s .= '%#MERMain#%T'
+	let s .= '%#MERTabMain#%T'
 
 	if tabpagenr('$') > 1
 		let s .= '%='

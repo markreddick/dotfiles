@@ -1,3 +1,14 @@
+"
+" ******************************
+"      NOTE NOTE NOTE
+"
+" This was my original "lines" file that has the current VIM 'mode' (NORMAL,
+" VISUAL or INSERT) displayed on the left section and the cursor x/y position 
+" on the right - decided I didn't need the mode displayed as VIM already
+" displays this for you automatically in the bottom line and the cursor
+" position I never referenced since I already have line numbers showing
+"
+" **********************
 
 function! GitBranchWithSymbol()
   if exists('*gitbranch#name')
@@ -64,21 +75,33 @@ function! ActiveStatus()
 
   let sl=""
 
+  if mode() == 'n'
+    let sl .= "%#MERNormalSection# NORMAL %#MERNormalSectionSep#\ue0b0"
+  elseif mode() == 'v'
+    let sl .= "%#MERVisualSection# VISUAL %#MERVisualSectionSep#\ue0b0"
+  elseif mode() == 'i'
+    let sl .= "%#MERInsertSection# INSERT %#MERInsertSectionSep#\ue0b0"
+  else
+    let sl .= "%#MERNormalSection# " . mode() . " %#MERNormalSectionSep#\ue0b0"
+  endif
+
   let sl.="%#MERSection2#"
-  let sl.=" %{GitBranchWithSymbol()}"
+  let sl.="%{GitBranchWithSymbol()}"
   let sl.="%#MERSection2Sep#\ue0b0"
   let sl.="%#MERMain#"
   let sl.=" %n:%f %r%m"
   let sl.="%<"
   let sl.="%="
-  let sl.="%#MERSection2Sep#\ue0b2"
-  let sl.="%#MERSection2#"
-  let sl.=" %{&fileformat}"
+  let sl.="%{&fileformat}"
   let sl.=" | %{&fileencoding?&fileencoding:&encoding}"
   let sl.=" | %Y "
+  let sl.="%#MERSection2Sep#\ue0b2"
+  let sl.="%#MERSection2#"
+  let sl.="%4p%% "
   let sl.="%#MERSection1Sep#\ue0b2"
   let sl.="%#MERSection1#"
-  let sl.="%4p%% "
+  let sl.=" %4l:%-3c "
+"  let sl.=" %4l "
   return sl
 endfunction
 
