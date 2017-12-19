@@ -28,6 +28,7 @@ source ~/.vim/mer-easy-custom-overrides.vim
 "call MERCustomOverride('ansi16')
 call MERCustomOverride('hacker')
 colorscheme mer-easy-custom
+"colorscheme phosphor
 
 " set a few highlight colors that I always want no matter which
 " colorscheme is set
