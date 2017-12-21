@@ -58,7 +58,7 @@ function! ActiveStatus()
   let sl.=" | %Y "
   let sl.="%#MERSection1Sep#\ue0b2"
   let sl.="%#MERSection1#"
-  let sl.=" %{GitBranchWithSymbol()}"
+  let sl.="%{GitBranchWithSymbol()}"
   let sl.="%#MERSection2Sep#\ue0b2"
   let sl.="%#MERSection2#"
   let sl.="%4p%% "
