@@ -18,6 +18,9 @@ fun! s:X(...)
   let fg = a:0 >= 2 ? a:2 : ''
   let bg = a:0 >= 3 ? a:3 : ''
   let attr = a:0 >= 4 ? a:4 : 'NONE'
+  let gfg = a:0 >= 5 ? a:5 : ''
+  let gbg = a:0 >= 6 ? a:6 : ''
+  let gattr = a:0 >= 7 ? a:7 :attr
 
   let cmd = 'hi '.group
   if (fg != '')
@@ -29,6 +32,15 @@ fun! s:X(...)
   if (attr != '')
     let cmd .= ' cterm='.attr
   endif
+  if (gfg != '')
+    let cmd .= ' guifg=' . gfg
+  endif
+  if (gbg != '')
+    let cmd .= ' guibg=' . gbg
+  endif
+"  if (gattr != '')
+"    let cmd = ' gui=' . gattr
+"  endif
 
   exec cmd
 
@@ -53,19 +65,20 @@ call s:SetVar('g:merHighlightColor1', 82)
 call s:SetVar('g:merHighlightColor2', 42)
 call s:SetVar('g:merRulerColor', 233)
 call s:SetVar('g:merErrorColor', 118)
+call s:SetVar('g:merErrorBackgroundColor', 16)
 
 " Matrix - Green
 "let s:bg_color = 16
-call s:X('Normal', g:merNormalColor, g:merBackgroundColor)
-call s:X('merBaseColor', g:merNormalColor, g:merBackgroundColor)
-call s:X('merCommentColor', g:merCommentColor)
-call s:X('merKeywordColor', g:merKeywordColor)
-call s:X('merInvisiblesColor', g:merInvisiblesColor)
-call s:X('merHighlightColor1', g:merHighlightColor1)
-call s:X('merHighlightColor2', g:merHighlightColor2)
+call s:X('Normal', g:merNormalColor, g:merBackgroundColor, '', g:merGUINormalColor, g:merGUIBackgroundColor)
+call s:X('merBaseColor', g:merNormalColor, g:merBackgroundColor, '', g:merGUINormalColor, g:merGUIBackgroundColor)
+call s:X('merCommentColor', g:merCommentColor, '', '', g:merGUICommentColor)
+call s:X('merKeywordColor', g:merKeywordColor, '', '', g:merGUIKeywordColor)
+call s:X('merInvisiblesColor', g:merInvisiblesColor, '', '', g:merGUIInvisiblesColor)
+call s:X('merHighlightColor1', g:merHighlightColor1, '', '', g:merGUIHighlightColor1)
+call s:X('merHighlightColor2', g:merHighlightColor2, '', '', g:merGUIHighlightColor2)
 call s:X('merMatchColor', '', '', 'reverse')
-call s:X('merRulerColor', '', g:merRulerColor)
-call s:X('merErrorColor', g:merErrorColor)
+call s:X('merRulerColor', '', g:merRulerColor, '', '', g:merGUIRulerColor)
+call s:X('merErrorColor', g:merErrorColor, g:merErrorBackgroundColor, '', g:merGUIErrorColor, g:merGUIErrorBackgroundColor)
 
 "call s:X('Normal', 40, s:bg_color)
 "call s:X('SpecialKey', 22) "spaces/tabs
@@ -87,34 +100,40 @@ hi! link WarningMsg Normal
 call s:X('Visual', '', '', 'reverse')
 
 " Spelling
-call s:X('SpellBad', '', 196, 'reverse')
-call s:X('SpellCap', '', 21, 'reverse')
-call s:X('SpellRare', '', 201, 'reverse')
-call s:X('SpellLocal', '', 33, 'underline')
+hi! link SpellBad merErrorColor
+hi! link SpellCap merErrorColor
+hi! link SpellRare merErrorColor
+hi! link SpellLocal merErrorColor
 
 " Popup menu 
-call s:X('PmenuThumb', '', 255)
-call s:X('Pmenu', 16, 91)
-call s:X('PmenuSel', 239, 16)
+hi! link PmenuThumb merErrorColor
+hi! link Pmenu Normal
+hi! link PmenuSel merHighlightColor1
 
 " wild menu
-call s:X('WildMenu', 16, 226, 'standout')
+call s:X('WildMenu', '', '', 'standout')
 
 " folding
-call s:X('Folded', 27, 238, 'standout')
-call s:X('FoldColumn', 27, 238, 'standout')
+call s:X('Folded', '', '', 'standout')
+call s:X('FoldColumn', '', '', 'standout')
 
 " signs
 hi! link SignColumn Normal
 
 " diff
-hi! link diffRemoved merErrorColor
-hi! link diffAdded merHighlightColor1
+hi! link diffRemoved merHighlightColor1
+hi! link diffAdded merKeywordColor
 
 " VimDiff
-call s:X('DiffAdd', 0, 18)
-call s:X('DiffDelete', 0, 9)
-call s:X('DiffChange', 255, 12)
+hi! link DiffAdd merKeywordColor
+hi! link DiffDelete merHighlightColor1
+hi! link DiffChange merHighlightColor2
+
+" GitGutter
+hi! link GitGutterAdd merKeywordColor
+hi! link GitGutterChange merHighlightColor2
+hi! link GitGutterDelete merHighlightColor1
+hi! link GitGutterChagneDelete merKeywordColor
 
 " tabline
 call s:X('TabLine', 255, 242, 'underline')
@@ -128,9 +147,9 @@ call s:X('VertSplit', 244)
 hi! link VertSplit merInvisiblesColor
 
 " cursor 
-call s:X('Cursor', g:merBackgroundColor, 21)
-call s:X('CursorLine', '', 243)
-call s:X('CursorColumn', '', 243)
+call s:X('Cursor', g:merBackgroundColor, g:merNormalColor, '', g:merGUINormalColor, g:merGUIBackgroundColor)
+call s:X('CursorLine', g:merBackgroundColor, g:merNormalColor, 'reverse', g:merGUINormalColor, g:merGUIBackgroundColor)
+hi! link CursorColumn merRulerColor
 
 " color column
 "call s:X('ColorColumn', '', 16)
@@ -148,15 +167,12 @@ call s:X('StatusLineTermNC', 16, 46, 'reverse')
 
 
 " special
-"call s:X('NonText', 202)
 hi! link NonText merInvisiblesColor
-"call s:X('SpecialChar', 202)
-"call s:X('Special', 202)
-"call s:X('Delimiter', 249)
+hi! link SpecialChar merKeywordColor
+hi! link Special merKeywordColor
 hi! link Delimiter Normal
-"call s:X('ErrorMsg', 202,1)
 hi! link ErrorMsg merErrorColor
-"call s:X('Todo', 202)
+hi! link Todo merHighlightColor2
 
 " SQL
 hi! link sqlKeyword String
@@ -164,10 +180,6 @@ hi! link sqlStatement String
 hi! link sqlType String
 
 " netrwtreelisting
-"call s:X('netrwDir', 202)
-"call s:X('netrwClassify', 292)
-"call s:X('netrwPlain', 202)
-"call s:X('netrwTreeBar', 202)
 hi! link netrwDir merHighlightColor1
 hi! link netrwClassify merBaseColor
 hi! link netrwPlain merBaseColor
@@ -178,6 +190,7 @@ hi! link netrwTreeBar merHighlightColor1
 hi! link htmlTag Statement
 hi! link htmlEndTag htmlTag
 hi! link htmlTagName htmlTag
+hi! link htmlLink merHighlightColor2
 
 " XML
 
@@ -191,10 +204,8 @@ hi! link xmlDocTypeDecl PreProc
 hi! link xmlDocTypeKeyword PreProc
 hi! link xmlProcessingDelim xmlAttrib
 
-
 " programming
 hi! link Constant merKeywordColor 
-"call s:X('Comment', 28)
 hi! link Comment merCommentColor
 hi! link Exception Noraml
 hi! link Boolean merKeywordColor 
@@ -203,12 +214,10 @@ hi! link Error ErrorMsg
 hi! link Identifier Normal
 hi! link PreProc Normal
 hi! link Operator merKeywordColor
-" Define == Keyword ??
 hi! link Keyword merKeywordColor
 hi! link Define merkeywordColor 
 hi! link Structure Normal
-"call s:X('String', 84)
-hi link String merHighlightColor1
+hi! link String merHighlightColor1
 hi! link StringDelimiter Normal
 hi! link Number merKeywordColor
 hi! link Float merKeywordColor
@@ -223,10 +232,8 @@ hi! link Include merKeywordColor
 " PHP
 hi! link phpRegion Normal
 hi! link phpKeyword Statement
-"call s:X('phpStringSingle', 36)
-"call s:X('phpStringDouble', 84)
-hi link phpStringSingle merHighlightColor1
-hi link phpStringDouble merHighlightColor2
+hi! link phpStringSingle merHighlightColor1
+hi! link phpStringDouble merHighlightColor2
 hi! link phpBacktick String
 hi! link phpDefine Define
 hi! link phpMethods Function
@@ -250,85 +257,6 @@ hi! link phpVarSelector merKeywordColor
 hi! link phpMethodsVar Normal
 hi! link phpSpecialFunction  Function
 hi! link phpRepeat Operator
-
-
-
-
-
-
-
-
-" custom status line and tab bar
-
-" Matrix/green
-"let g:merSection1FG=40
-"let g:merSection1BG=16
-"let g:merSection2FG=255
-"let g:merSection2BG=28
-"let g:merMainFG=255
-"let g:merMainBG=22
-"let g:merVisualFG=255
-"let g:merVisualBG=202
-"let g:merInsertFG=254
-"let g:merInsertBG=28
-"let g:merInactiveFG=249
-"let g:merInactiveBG=237
-
-" LCARS
-"let g:merSection1FG=16
-"let g:merSection1BG=63
-"let g:merSection2FG=16
-"let g:merSection2BG=99
-"let g:merMainFG=16
-"let g:merMainBG=208
-"let g:merVisualFG=255
-"let g:merVisualBG=202
-"let g:merInsertFG=254
-"let g:merInsertBG=28
-"let g:merInactiveFG=249
-"let g:merInactiveBG=237
-
-" amber
-"let g:merSection1FG=16
-"let g:merSection1BG=214
-"let g:merSection2FG=16
-"let g:merSection2BG=208
-"let g:merMainFG=16
-"let g:merMainBG=202
-"let g:merVisualFG=255
-"let g:merVisualBG=202
-"let g:merInsertFG=254
-"let g:merInsertBG=28
-"let g:merInactiveFG=249
-"let g:merInactiveBG=237
-
-
-"exec 'hi MERNormalSection ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
-"exec 'hi MERNormalSectionSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
-"exec 'hi MERVisualSection ctermfg=' . s:merVisualFG . ' ctermbg=' . s:merVisualBG . ' cterm=NONE'
-"exec 'hi MERVisualSectionSep ctermfg=' . s:merVisualBG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
-"exec 'hi MERInsertSection ctermfg=' . s:merInsertFG . ' ctermbg=' . s:merInsertBG . ' cterm=NONE'
-"exec 'hi MERInsertSectionSep ctermfg=' . s:merInsertBG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
- 
-"exec 'hi MERMain ctermfg=' . s:merMainFG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
-"exec 'hi MERInactive ctermfg=' . s:merInactiveFG . ' ctermbg=' . s:merInactiveBG . ' cterm=NONE'
-"exec 'hi MERSection1 ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
-"exec 'hi MERSection1Sep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
-"exec 'hi MERSection2 ctermfg=' . s:merSection2FG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
-"exec 'hi MERSection2Sep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
-
-"exec 'hi MERTabMain ctermfg=' . s:merMainFG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
-"exec 'hi MERTab ctermfg=' . s:merSection2FG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
-"exec 'hi MERTabSep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
-"exec 'hi MERLastTabSep ctermfg=' . s:merSection2BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
-"exec 'hi MERCurrentTab ctermfg=' . s:merSection1FG . ' ctermbg=' . s:merSection1BG . ' cterm=NONE'
-"exec 'hi MERCurrentTabSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merSection2BG . ' cterm=NONE'
-"exec 'hi MERCurrentLastTabSep ctermfg=' . s:merSection1BG . ' ctermbg=' . s:merMainBG . ' cterm=NONE'
-
-
-
-
-
 
 " delete functions
 delf s:X

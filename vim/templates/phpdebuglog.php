@@ -2,7 +2,7 @@
 
 function dlog($msg, $data = '')
 {
-	$file = '/home/mreddick/mer_php.log';
+	$file = '/home/mark/mer_php.log';
 	
 	if (is_bool($data)) {
 		if ($data == true) {

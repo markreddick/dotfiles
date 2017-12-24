@@ -1,14 +1,34 @@
 scriptencoding utf-8
 syntax on
+
+" enable file type detection - required for Dirvish to work
+filetype plugin indent on
+
+" the above call to turn on plugin indenting based on filetype also
+" turns on filetype indenting outside of plugins - so we will now turn
+" off basic filetype indenting as this keeps messing with my code 
+filetype indent off
+
+" not exactly sure what this does, but it works to get the mouse
+" able to move statusbar to adjust window sizes
+if has("mouse_sgr")
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+endif
+
 " enable 256 color
 set t_Co=256
 set background=dark
 
-"colorscheme jellybeans
+set termguicolors
+
+" customize the mer-easy-custom colorscheme
 source ~/.vim/mer-easy-custom-overrides.vim
-call MERCustomOverride('ansi16')
-"call MERCustomOverride('lcars')
+"call MERCustomOverride('ansi16')
+call MERCustomOverride('hacker')
 colorscheme mer-easy-custom
+"colorscheme phosphor
 
 " set a few highlight colors that I always want no matter which
 " colorscheme is set
@@ -55,6 +75,13 @@ set visualbell												" display visual bell instead of beeping
 set ttyfast													" fast terminal connection
 "set autochdir												" automatically charnge current working dir to file of current buffer
 set viminfo='1000,f1,<500,%,n~/.vim/viminfo
+set sessionoptions-=options									" remove 'options' from the data saved when saving sessions - this was causing color schemes to load base theme without taking into account global vars
+
+"show block cursor in normal mode and a line cursor in insert mode
+let &t_ti .= "\e[1 q"
+let &t_SI .= "\e[5 q"
+let &t_EI .= "\e[1 q"
+let &t_te .= "\e[0 q"
 
 "turn on the sign column always so it doesn't cause the whole window to move
 "when there are signs or no signs to display
@@ -107,12 +134,10 @@ augroup relativenumbertoggle
   autocmd WinLeave,FocusLost,InsertEnter * set norelativenumber
 augroup END
 
-execute pathogen#infect()
-
 " enable PHP autocomplete for all PHP files
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
-" trim whitespaces at end of line whenver saving a PHP file
+" trim whitespace from end of lines whenever saving PHP file
 "autocmd FileType php autocmd BufWritePre <buffer> %s/\s\+$//e
 
 function! NumberToggle()
@@ -125,6 +150,11 @@ function! NumberToggle()
   endif
 endfunc
 
+function! GetColorSchemeGroup()
+  let s = synID(line('.'), col('.'), 1)
+  echo synIDattr(s, 'name') . ' -> ' . synIDattr(synIDtrans(s), 'name')
+endfunc
+
 set timeout timeoutlen=3000 ttimeoutlen=10	" time out on mapping after 3 seconds, on key codes after 1/100th sec
 
 " key mappings
@@ -133,8 +163,6 @@ execute "inoremap <leader>l include_once('" . s:debug_path . "');"
 inoremap <c-F> <C-x><C-o>
 inoremap <leader>p <ESC>:r ~/.vim/templates/phpdoc.php<CR>jA
 inoremap <leader>d <ESC>:r ~/.vim/templates/phperron.php<CR>i
-"inoremap <leader>l <ESC>:r ~/templates/phpdebuglog.php<CR>i
-"inoremap <leader>l include_once('/home/mreddick/.vim/templates/phpdebuglog.php');
 nnoremap <leader>d :bp\|bd #<CR>
 nnoremap <leader>n :call NumberToggle()<CR>
 nnoremap <leader>b :ls<CR>:b
@@ -152,20 +180,27 @@ noremap <F11> :source ~/.vim/session/session_3<CR>
 noremap <F12> :source ~/.vim/session/session_4<CR>
 nnoremap <TAB> <C-W>w
 nnoremap <s-TAB> <C-W>W
+nnoremap <leader>l :call GetColorSchemeGroup()<CR>
 
 " load my custom statusline and tabline
-let g:merSection1FG=6
-let g:merSection1BG=7
-let g:merSection2FG=7
-let g:merSection2BG=13
-let g:merMainFG=7
-let g:merMainBG=12
-let g:merVisualFG=6
-let g:merVisualBG=9
-let g:merInsertFG=6
-let g:merInsertBG=8
-let g:merInactiveFG=6
-let g:merInactiveBG=11
+"let g:LCARS256 = 1
+"source ~/.vim/lcars-lines.vim
 
+" load my custom statusline and tabline
+"let g:merSection1FG=6
+"let g:merSection1BG=7
+"let g:merSection2FG=7
+"let g:merSection2BG=13
+"let g:merMainFG=7
+"let g:merMainBG=12
+"let g:merVisualFG=6
+"let g:merVisualBG=9
+"let g:merInsertFG=6
+"let g:merInsertBG=8
+"let g:merInactiveFG=6
+"let g:merInactiveBG=11
+
+source ~/.vim/mer-lines-overrides.vim
+call MERLinesOverride('hacker')
 source ~/.vim/mer-lines.vim
 
