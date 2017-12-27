@@ -2,7 +2,7 @@
 
 function dlog($msg, $data = '')
 {
-	$file = '/home/mark/mer_php.log';
+	$file = '/home/mreddick/mer_php.log';
 	
 	if (is_bool($data)) {
 		if ($data == true) {
@@ -12,12 +12,12 @@ function dlog($msg, $data = '')
 		}
 	}
 
-	if ($data == '') {
+	if (!isset($data)) {
 		$data = $msg;
 		$msg = null;
 	}
 
-	if (empty($data)) {
+	if (is_null($data)) {
 		$data = '[null]';
 	}
 
@@ -32,9 +32,9 @@ function dlog($msg, $data = '')
 	$output .= $data;
 
 	// if the log file gets too large, we'll clear it out first
-//	if (filesize($file) > 200000) {
-//		file_put_contents($file, '');
-//	}
+	if (filesize($file) > 200000) {
+		file_put_contents($file, '');
+	}
 
 	file_put_contents($file, "\n" . date('H:i:s') . ' - ', FILE_APPEND);
 	if (!empty($msg)) {
