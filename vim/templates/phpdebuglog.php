@@ -2,7 +2,7 @@
 
 function dlog($msg, $data = null)
 {
-	$file = '/home/mark/mer_php.log';
+	$file = '/home/mreddick/mer_php.log';
 	
 	if (is_bool($data)) {
 		if ($data == true) {
@@ -12,9 +12,13 @@ function dlog($msg, $data = null)
 		}
 	}
 
-	if (empty($data)) {
+	if (!isset($data)) {
 		$data = $msg;
 		$msg = null;
+	}
+
+	if (is_null($data)) {
+		$data = '[null]';
 	}
 
 	if (is_array($data)) {
