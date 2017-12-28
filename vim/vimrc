@@ -28,7 +28,7 @@ source ~/.vim/mer-easy-custom-overrides.vim
 "call MERCustomOverride('ansi16')
 call MERCustomOverride('hacker')
 colorscheme mer-easy-custom
-"colorscheme phosphor
+"colorscheme jellybeans
 
 " set a few highlight colors that I always want no matter which
 " colorscheme is set
@@ -65,6 +65,7 @@ set list													" turns on showing chars described in listchars
 set showmatch												" highlights matching parens/brackets
 set laststatus=2											" always enbale status line
 set showtabline=2											" alwasys display tabline
+set noequalalways											" do NOT resize windows to make them equal when splitting/closing
 set relativenumber											" in place of absolute line numbers, show relative from current // NOTE: THIS GREALY SLOWS DOWN SCROLLING WHEN ENABLED
 set lazyredraw												" redraw screen less frequently - ths speeds up verticle scrolling so can now use relativenumber with acceptable scroll speed
 set undofile												" create undo files so undos carry over even after closed
