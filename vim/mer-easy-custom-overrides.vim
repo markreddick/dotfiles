@@ -97,6 +97,30 @@ function MERCustomOverride(overrideName)
     let g:merGUIErrorColor = '#000000'
     let g:merGUIErrorBackgroundColor = '#ffb000'
 
+  elseif a:overrideName == 'vader'
+
+    let g:merBackgroundColor = 16
+    let g:merNormalColor = 208 
+    let g:merCommentColor = 202
+    let g:merKeywordColor = 214
+    let g:merInvisiblesColor = 235
+    let g:merHighlightColor1 = 226
+    let g:merHighlightColor2 = 184
+    let g:merRulerColor = 233
+    let g:merErrorColor = 196
+    let g:merErrorBackgroundColor = 16
+
+    let g:merGUIBackgroundColor = '#000000'
+    let g:merGUINormalColor = '#bb0000'
+    let g:merGUICommentColor = '#5f0000'
+    let g:merGUIKeywordColor = '#bb3c3c'
+    let g:merGUIInvisiblesColor = '#531a1a'
+    let g:merGUIHighlightColor1 = '#ff0000'
+    let g:merGUIHighlightColor2 = '#d15400'
+    let g:merGUIRulerColor = '#4b2004'
+    let g:merGUIErrorColor = '#000000'
+    let g:merGUIErrorBackgroundColor = '#ff0000'
+
   elseif a:overrideName == 'lcars'
 
     let g:merBackgroundColor = 16
@@ -109,7 +133,18 @@ function MERCustomOverride(overrideName)
     let g:merRulerColor = 236
     let g:merErrorColor = 9
     let g:merErrorBackgroundColor = 16
-  
+
+    let g:merGUIBackgroundColor = '#000000'
+    let g:merGUINormalColor = '#ff9966'
+    let g:merGUICommentColor = '#666699'
+    let g:merGUIKeywordColor = '#ffcc99'
+    let g:merGUIInvisiblesColor = '#666699'
+    let g:merGUIHighlightColor1 = '#99ccff'
+    let g:merGUIHighlightColor2 = '#9966ff'
+    let g:merGUIRulerColor = '#ff9900'
+    let g:merGUIErrorColor = '#ff3300'
+    let g:merGUIErrorBackgroundColor = '#000000'
+
   elseif a:overrideName == 'ansi16'
 
     let g:merBackgroundColor = 6

@@ -61,6 +61,26 @@ function MERLinesOverride(overrideName)
     let g:merGUIInactiveFG='#000000'
     let g:merGUIInactiveBG='#0f9e08'
 
+  elseif a:overrideName == 'jellybeans'
+
+    let g:merSection1FG=253
+    let g:merSection1BG=21
+    let g:merSection2FG=255
+    let g:merSection2BG=33
+    let g:merMainFG=253
+    let g:merMainBG=27
+    let g:merInactiveFG=253
+    let g:merInactiveBG=21
+
+    let g:merGUISection1FG='#282a36'
+    let g:merGUISection1BG='#bd93f9'
+    let g:merGUISection2FG='#282a36'
+    let g:merGUISection2BG='#8197bf'
+    let g:merGUIMainFG='#30302c'
+    let g:merGUIMainBG='#ffb86c'
+    let g:merGUIInactiveFG='#e8e8d3'
+    let g:merGUIInactiveBG='#4e4e43'
+
   endif
 
 endfunction

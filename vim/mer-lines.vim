@@ -68,8 +68,8 @@ endfunction
 function! InactiveStatus()
   let sl=""
   let sl.="%#MERInactive#"
-  let sl.=" %n:%t %r%m"
   let sl.="%<"
+  let sl.=" %n:%f %r%m"
   let sl.="%="
   let sl.=""
   let sl.="%4p%% "
