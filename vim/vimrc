@@ -27,8 +27,8 @@ set termguicolors
 source ~/.vim/mer-easy-custom-overrides.vim
 "call MERCustomOverride('ansi16')
 call MERCustomOverride('vader')
-"colorscheme mer-easy-custom
-colorscheme jellybeans
+colorscheme mer-easy-custom
+"colorscheme jellybeans
 
 " set a few highlight colors that I always want no matter which
 " colorscheme is set
@@ -202,6 +202,6 @@ nnoremap <leader>l :call GetColorSchemeGroup()<CR>
 "let g:merInactiveBG=11
 
 source ~/.vim/mer-lines-overrides.vim
-call MERLinesOverride('jellybeans')
+call MERLinesOverride('vader')
 source ~/.vim/mer-lines.vim
 
