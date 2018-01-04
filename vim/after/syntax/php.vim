@@ -1,35 +1,35 @@
 "if !exists("b:phpdocblock_syntax") || b:phpdocblock_syntax != 0
 
-	syntax match mer1 "@api" containedin=phpComment 
-	syntax match mer1 "@author" containedin=phpComment 
-	syntax match mer1 "@category" containedin=phpComment 
-	syntax match mer1 "@copyright" containedin=phpComment 
-	syntax match mer1 "@deprecated" containedin=phpComment 
-	syntax match mer1 "@example" containedin=phpComment 
-	syntax match mer1 "@filesource" containedin=phpComment 
-	syntax match mer1 "@global" containedin=phpComment 
-	syntax match mer1 "@ignore" containedin=phpComment 
-	syntax match mer1 "@internal" containedin=phpComment 
-	syntax match mer1 "@license" containedin=phpComment 
-	syntax match mer1 "@link" containedin=phpComment 
-	syntax match mer1 "@method" containedin=phpComment 
-	syntax match mer1 "@package" containedin=phpComment 
-	syntax match mer1 "@param" containedin=phpComment 
-	syntax match mer1 "@property" containedin=phpComment 
-	syntax match mer1 "@property-read" containedin=phpComment 
-	syntax match mer1 "@property-write" containedin=phpComment 
-	syntax match mer1 "@return" containedin=phpComment 
-	syntax match mer1 "@see" containedin=phpComment 
-	syntax match mer1 "@since" containedin=phpComment 
-	syntax match mer1 "@source" containedin=phpComment 
-	syntax match mer1 "@subpackage" containedin=phpComment 
-	syntax match mer1 "@throws" containedin=phpComment 
-	syntax match mer1 "@todo" containedin=phpComment 
-	syntax match mer1 "@uses" containedin=phpComment 
-	syntax match mer1 "@used-by" containedin=phpComment
-	syntax match mer1 "@var" containedin=phpComment 
-	syntax match mer1 "@version" containedin=phpComment 
-	highlight link mer1 Keyword 
+	syntax match merPHPDocTag "@api" containedin=phpDocTags 
+	syntax match merPHPDocTag "@author" containedin=phpDocTags 
+	syntax match merPHPDocTag "@category" containedin=phpDocTags 
+	syntax match merPHPDocTag "@copyright" containedin=phpDocTags 
+	syntax match merPHPDocTag "@deprecated" containedin=phpDocTags 
+	syntax match merPHPDocTag "@example" containedin=phpDocTags 
+	syntax match merPHPDocTag "@filesource" containedin=phpDocTags 
+	syntax match merPHPDocTag "@global" containedin=phpDocTags 
+	syntax match merPHPDocTag "@ignore" containedin=phpDocTags 
+	syntax match merPHPDocTag "@internal" containedin=phpDocTags 
+	syntax match merPHPDocTag "@license" containedin=phpDocTags 
+	syntax match merPHPDocTag "@link" containedin=phpDocTags 
+	syntax match merPHPDocTag "@method" containedin=phpDocTags 
+	syntax match merPHPDocTag "@package" containedin=phpDocTags 
+	syntax match merPHPDocTag "@param" containedin=phpDocTags
+	syntax match merPHPDocTag "@property" containedin=phpDocTags 
+	syntax match merPHPDocTag "@property-read" containedin=phpDocTags 
+	syntax match merPHPDocTag "@property-write" containedin=phpDocTags 
+	syntax match merPHPDocTag "@return" containedin=phpDocTags 
+	syntax match merPHPDocTag "@see" containedin=phpDocTags 
+	syntax match merPHPDocTag "@since" containedin=phpDocTags 
+	syntax match merPHPDocTag "@source" containedin=phpDocTags 
+	syntax match merPHPDocTag "@subpackage" containedin=phpDocTags 
+	syntax match merPHPDocTag "@throws" containedin=phpDocTags 
+	syntax match merPHPDocTag "@todo" containedin=phpDocTags 
+	syntax match merPHPDocTag "@uses" containedin=phpDocTags 
+	syntax match merPHPDocTag "@used-by" containedin=phpDocTags
+	syntax match merPHPDocTag "@var" containedin=phpDocTags 
+	syntax match merPHPDocTag "@version" containedin=phpDocTags 
+	highlight link merPHPDocTag Keyword 
 
 "	let b:phpdocblock_syntax = 1
 
