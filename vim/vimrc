@@ -26,7 +26,7 @@ set termguicolors
 " customize the mer-easy-custom colorscheme
 source ~/.vim/mer-easy-custom-overrides.vim
 "call MERCustomOverride('ansi16')
-call MERCustomOverride('vader')
+call MERCustomOverride('hacker')
 colorscheme mer-easy-custom
 "colorscheme jellybeans
 
@@ -67,7 +67,7 @@ set laststatus=2											" always enbale status line
 set showtabline=2											" alwasys display tabline
 set noequalalways											" do NOT resize windows to make them equal when splitting/closing
 set relativenumber											" in place of absolute line numbers, show relative from current // NOTE: THIS GREALY SLOWS DOWN SCROLLING WHEN ENABLED
-set lazyredraw												" redraw screen less frequently - ths speeds up verticle scrolling so can now use relativenumber with acceptable scroll speed
+set nolazyredraw												" redraw screen less frequently - ths speeds up verticle scrolling so can now use relativenumber with acceptable scroll speed
 set undofile												" create undo files so undos carry over even after closed
 set undolevels=5000											" store up to 5000 levels of undo history
 set undodir=$HOME/.vim/undo									" where to save undo files
@@ -101,8 +101,16 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25									" set netrw width to 25% of page
 
 " php syntax options
-let php_sql_query = 1										" highlight SQL syntax in strings
-let php_htmlInStrings = 1									" highlight HTML in strings
+" turning off a bunch of things to speed up scrolling
+let php_htmlInStrings = 0									" highlight HTML in strings
+let php_sql_query = 0
+let php_sql_heredoc = 0
+let php_sql_nowdoc = 0
+let php_html_in_strings = 0
+let php_html_in_heredoc = 0
+let php_html_in_nowdoc = 0
+let php_html_load = 0
+let php_ignore_phpdoc = 0
 
 " CtrlP options
 let g:ctrlp_working_path_mode = 'ra'
@@ -202,6 +210,6 @@ nnoremap <leader>l :call GetColorSchemeGroup()<CR>
 "let g:merInactiveBG=11
 
 source ~/.vim/mer-lines-overrides.vim
-call MERLinesOverride('vader')
+call MERLinesOverride('hacker')
 source ~/.vim/mer-lines.vim
 
