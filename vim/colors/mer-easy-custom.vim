@@ -156,7 +156,7 @@ hi! link CursorColumn merRulerColor
 hi! link ColorColumn merRulerColor
 
 " parens
-call s:X('MatchParen', g:merHighlightColor1, g:merBackgroundColor, 'reverse')
+call s:X('MatchParen', g:merKeywordColor, g:merBackgroundColor, 'bold', g:merGUIKeywordColor, g:merGUIBackgroundColor)
 
 " conceal
 call s:X('Conceal', 251, 240)
