@@ -1,13 +1,31 @@
 <?php
 
-function dlog($msg, $data = '')
+$last_secs;
+
+function tlog($msg, $data = '')
 {
+	dlog($msg, $data, true, 1);
+}
+
+function dlog($msg, $data = '', $show_timing = false, $backtrace_index = 0)
+{
+	global $last_secs;
+
+	$secs = microtime(true);
+
+	if (!isset($last_secs)) {
+		$last_secs = $secs;
+	}
+
+	$elapsed_secs = $secs - $last_secs;
+	$last_secs = $secs;
+
 	static $last_back_file = '';
 
-	$back = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1);
+	$back = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
-	$back_file = isset($back[0]['file']) ? $back[0]['file'] : '';
-	$back_line = isset($back[0]['line']) ? $back[0]['line'] : '';
+	$back_file = isset($back[$backtrace_index]['file']) ? $back[$backtrace_index]['file'] : '';
+	$back_line = isset($back[$backtrace_index]['line']) ? $back[$backtrace_index]['line'] : '';
 
 	if ($last_back_file != $back_file) {
 		$last_back_file = $back_file;
@@ -52,11 +70,16 @@ function dlog($msg, $data = '')
 	$output = "\n";
 
 	if (strlen($back_file) > 0) {
-		$output = "\n\n" . date('H:i:s');
+		$output .= "\n" . date('H:i:s');
 		$output .= ' - ' . $back_file . "\n";
 
 	}
-	$output .= "  " . $back_line . ' - ';
+
+	if ($show_timing) {
+		$output .= number_format($elapsed_secs, 6) . ' -';
+	}
+
+	$output .= sprintf("%5d", $back_line) . ' - ';
 
 	if (!empty($msg)) {
 		$output .=  $msg . ' - ';
@@ -70,4 +93,21 @@ function dlog($msg, $data = '')
 
 	file_put_contents($file, $output, FILE_APPEND);	
 }
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+function dlogExceptionHandler($ex)
+{
+	dlog('exception', $ex->getMessage());
+}
+
+function dlogErrorHandler($errno, $errstr, $errfile, $errline)
+{
+	dlog('error', $errstr . " on line " . $errline . ' of file ' . $errfile);
+}
+
+set_exception_handler('dlogExceptionHandler');
+set_error_handler('dlogErrorHandler');
+
 ?>
