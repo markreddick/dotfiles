@@ -1,3 +1,4 @@
+set encoding=utf-8
 scriptencoding utf-8
 syntax on
 
@@ -172,6 +173,8 @@ execute "inoremap <leader>l include_once('" . s:debug_path . "');"
 inoremap <c-F> <C-x><C-o>
 inoremap <leader>p <ESC>:r ~/.vim/templates/phpdoc.php<CR>jA
 inoremap <leader>d <ESC>:r ~/.vim/templates/phperron.php<CR>i
+inoremap <leader>v <ESC>:r ~/.vim/templates/phptestproviders.php<CR>
+inoremap <leader>t <ESC>:r ~/.vim/templates/phptests.php<CR>
 nnoremap <leader>d :bp\|bd #<CR>
 nnoremap <leader>n :call NumberToggle()<CR>
 nnoremap <leader>b :ls<CR>:b

@@ -99,7 +99,9 @@ ini_set('display_errors', 1);
 
 function dlogExceptionHandler($ex)
 {
-	dlog('exception', $ex->getMessage());
+	$msg = $ex->getMessage() . ' on line ' . $ex->getLine() . ' of file ' . $ex->getFile();
+
+	dlog('exception', $msg);
 }
 
 function dlogErrorHandler($errno, $errstr, $errfile, $errline)
