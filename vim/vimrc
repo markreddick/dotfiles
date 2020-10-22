@@ -25,11 +25,11 @@ set background=dark
 set termguicolors
 
 " customize the mer-easy-custom colorscheme
-source ~/.vim/mer-easy-custom-overrides.vim
+"source ~/.vim/mer-easy-custom-overrides.vim
 "call MERCustomOverride('ansi16')
-call MERCustomOverride('hacker')
-colorscheme mer-easy-custom
-"colorscheme jellybeans
+"call MERCustomOverride('lcars')
+"colorscheme mer-easy-custom
+colorscheme jellybeans
 
 " set a few highlight colors that I always want no matter which
 " colorscheme is set
@@ -125,6 +125,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 " histwin config
 hi! link UBKey Comment
@@ -213,6 +214,6 @@ nnoremap <leader>l :call GetColorSchemeGroup()<CR>
 "let g:merInactiveBG=11
 
 source ~/.vim/mer-lines-overrides.vim
-call MERLinesOverride('hacker')
+call MERLinesOverride('jellybeans')
 source ~/.vim/mer-lines.vim
 
