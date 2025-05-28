@@ -120,13 +120,6 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }	" use ctrlp-py-matcher
 let g:ctrlp_custom_ignore = 'undo\'
 let g:airline_powerline_fonts = 1
 
-"syntastic config
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-
 " histwin config
 hi! link UBKey Comment
 hi! link UBActive String
