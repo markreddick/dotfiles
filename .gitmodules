@@ -10,12 +10,12 @@
 [submodule "vim/pack/mer-plugins/start/histwin.vim"]
 	path = vim/pack/mer-plugins/start/histwin.vim
 	url = https://github.com/chrisbra/histwin.vim.git
-[submodule "vim/pack/mer-plugins/start/syntastic"]
-	path = vim/pack/mer-plugins/start/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/pack/mer-plugins/start/vim-gitbranch"]
 	path = vim/pack/mer-plugins/start/vim-gitbranch
 	url = https://github.com/itchyny/vim-gitbranch.git
 [submodule "vim/pack/mer-plugins/start/vim-gitgutter"]
 	path = vim/pack/mer-plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vim/pack/mer-plugins/start/ale"]
+	path = vim/pack/mer-plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git
