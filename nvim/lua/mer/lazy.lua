@@ -19,4 +19,9 @@ require("lazy").setup({ { import = "mer.plugins" }, { import = "mer.plugins.lsp"
   change_detection = {
     notify = false,
   },
+  performance = {
+    rtp = {
+      reset = false,
+    },
+  },
 })

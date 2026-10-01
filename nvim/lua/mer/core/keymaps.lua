@@ -6,6 +6,10 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>d", ":bdelete<CR>", { desc = "Delete current buffer" })
 keymap.set("n", "<leader>b", ":ls<CR>:b", { desc = "List buffers" })
 keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>:pwd<CR>", { desc = "Set working directory" })
+keymap.set("n", "<leader>ee", "<cmd>edit .<CR>", { desc = "Open working directory" })
+keymap.set("n", "<leader>ef", function()
+	vim.cmd.edit(vim.fn.fnameescape(vim.fn.expand("%:p:h")))
+end, { desc = "Open current file directory" })
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
@@ -19,4 +23,3 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
-

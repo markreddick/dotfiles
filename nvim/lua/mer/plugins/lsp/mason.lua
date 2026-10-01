@@ -6,6 +6,7 @@ return {
       ensure_installed = {
         "html",
         "eslint",
+        "intelephense",
       },
     },
     dependencies = {

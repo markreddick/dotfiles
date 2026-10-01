@@ -44,6 +44,24 @@ return {
       end
     end
 
+    local function available_linters(linters)
+      local available = {}
+
+      for _, linter_name in ipairs(linters) do
+        local linter = lint.linters[linter_name]
+        local cmd = linter.cmd
+        if type(cmd) == "function" then
+          cmd = cmd()
+        end
+
+        if cmd and vim.fn.executable(cmd) == 1 then
+          table.insert(available, linter_name)
+        end
+      end
+
+      return available
+    end
+
     local function try_linting()
       local linters = lint.linters_by_ft[vim.bo.filetype]
 
@@ -52,7 +70,7 @@ return {
         remove_linter_if_missing_config_file(linters, "eslint_d", "eslint.config.js")
       end
 
-      lint.try_lint(linters)
+      lint.try_lint(linters and available_linters(linters) or nil)
     end
 
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {

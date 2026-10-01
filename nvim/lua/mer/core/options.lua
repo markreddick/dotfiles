@@ -1,4 +1,7 @@
-vim.cmd("let g:netrw_liststyle = 3")
+-- Disable the legacy netrw plugin. Neovim 0.13's built-in dir plugin handles
+-- directory listings instead.
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 local opt = vim.opt
 
