@@ -27,6 +27,7 @@ return {
 		require("bufferline").setup({
 			options = {
 				mode = "tabs",
+				show_buffer_close_icons = false,
 				custom_areas = {
 					right = tabline_counts,
 				},

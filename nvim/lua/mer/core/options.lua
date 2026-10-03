@@ -40,6 +40,7 @@ opt.foldenable = false -- disable code folding
 opt.scrolloff = 3 -- scroll the dinwo so we can always see x lines around the cursor
 opt.showmatch = true -- highlights matching parens/brackets
 opt.showtabline = 2 -- always show tab bar
+opt.mouse = "a" -- enable mouse interaction, including tabline clicks
 opt.laststatus = 2 -- always enable status line
 opt.equalalways = false -- turn off making split windows always equal sizes
 opt.shada = "'1000,f1,<500,%"
