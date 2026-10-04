@@ -28,9 +28,20 @@ return {
 			options = {
 				mode = "tabs",
 				show_buffer_close_icons = false,
+				show_buffer_icons = false,
+				show_duplicate_prefix = false,
+				tab_size = 10,
+				truncate_names = false,
+				separator_style = "slant",
 				custom_areas = {
 					right = tabline_counts,
 				},
+			},
+			highlights = {
+				buffer_selected = {
+					italic = false,
+					bold = false
+				}
 			},
 		})
 
