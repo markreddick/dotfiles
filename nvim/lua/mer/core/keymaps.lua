@@ -3,6 +3,13 @@ vim.g.mapleader = " "
 local keymap = vim.keymap -- for conciseness
 
 keymap.set("n", "Y", "yy", { noremap = true, desc = "Yank current line" })
+keymap.set("n", "-", function()
+	if vim.bo.filetype == "directory" then
+		require("nvim.dir")._open_parent()
+	else
+		vim.cmd("browse edit")
+	end
+end, { desc = "Open directory browser or go to parent" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>d", ":bdelete<CR>", { desc = "Delete current buffer" })
 keymap.set("n", "<leader>b", ":ls<CR>:b", { desc = "List buffers" })

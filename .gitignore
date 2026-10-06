@@ -17,3 +17,5 @@ vim/undo/
 vim/session/
 .netrwhist
 viminfo
+
+nvim/nvim.log
