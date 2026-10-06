@@ -13,7 +13,7 @@ return {
         bg_popup = "#00111E",
         bg_search = "#3E90D7",
         bg_sidebar = "#00111E",
-        bg_statusline = "#00111E",
+        bg_statusline = "#012646",
         bg_visual = "#064984",
         fg = "#E3EEF7",
         fg_dark = "#AECBE5",

@@ -3,6 +3,10 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- enable type detection, file type plugins, and file type indenting
+vim.cmd("filetype plugin indent on")
+vim.cmd("filetype indent off")
+
 local opt = vim.opt
 
 opt.relativenumber = true
@@ -23,7 +27,7 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 opt.hlsearch = true -- highlight search matches
 opt.incsearch = true -- highlight search matches as you type
 
-opt.cursorline = true
+opt.cursorline = false -- do not highlight cursor line
 
 -- turn on termguicolors for tokyonight colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
