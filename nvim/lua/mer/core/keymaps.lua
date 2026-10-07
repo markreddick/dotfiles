@@ -2,12 +2,28 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
-keymap.set("n", "Y", "yy", { noremap = true, desc = "Yank current line" })
-keymap.set("n", "-", function()
+local function nativeBrowseAndSelect()
+	-- get the active file's base name
+	local filename = vim.fn.expand("%:t");
+	-- open the new file browser's native file browser to the directory of the current file
 	if vim.bo.filetype == "directory" then
 		require("nvim.dir")._open_parent()
 	else
-		vim.cmd("browse edit")
+		vim.cmd("browse edit %:p:h")
+	end
+	-- navigate to the current file's entry in the browse window
+	if filename ~= "" then
+		vim.fn.search("^" .. vim.pesc(filename) .. "$", "w")
+	end
+end
+
+keymap.set("n", "Y", "yy", { noremap = true, desc = "Yank current line" })
+keymap.set("n", "-", nativeBrowseAndSelect, { desc = "Open directory browser or go to parent"})
+keymap.set("n", "_", function()
+	if vim.bo.filetype == "directory" then
+		require("nvim.dir")._open_parent()
+	else
+		vim.cmd("browse edit %:p:h")
 	end
 end, { desc = "Open directory browser or go to parent" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })

@@ -18,7 +18,7 @@ return {
 					fg = "#e0af68",
 				},
 				{
-					text = ("󰈙 %d "):format(buffers),
+					text = (" 󰈙 %d "):format(buffers),
 					fg = "#7aa2f7",
 				},
 			}
